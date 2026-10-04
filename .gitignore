@@ -1,0 +1,7 @@
+# Binaries & Downloads
+cloudflared.exe
+*.exe
+
+# Logs & Temp
+*.log
+.system_generated/

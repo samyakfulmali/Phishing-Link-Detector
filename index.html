@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PhishGuard | Advanced Phishing Link Detector & Cyber Defense Platform</title>
-  <meta name="description" content="Real-time heuristic Phishing Link Detector and Cyber Defense Platform. Analyze suspicious URLs, detect brand spoofing, lookalike domains, concealed redirects, and credential harvesting traps before you click.">
+  <meta name="description"
+    content="Real-time heuristic Phishing Link Detector and Cyber Defense Platform. Analyze suspicious URLs, detect brand spoofing, lookalike domains, concealed redirects, and credential harvesting traps before you click.">
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
   <!-- Reading Progress Bar -->
@@ -16,9 +19,10 @@
   <header class="navbar">
     <a href="#detector" class="nav-brand">
       <div class="brand-icon">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-          <path d="m9 12 2 2 4-4"/>
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+          <path d="m9 12 2 2 4-4" />
         </svg>
       </div>
       <span>PhishGuard <span style="color: var(--cyan-primary); font-weight: 700; font-size: 0.85em;">AI</span></span>
@@ -57,14 +61,18 @@
   <!-- Hero & Primary Link Detector Section -->
   <section id="detector" class="hero-section" style="padding-bottom: 2rem;">
     <div class="badge-tag">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+      </svg>
       Real-Time Heuristic Threat Analyzer
     </div>
     <h1 class="hero-title">
       Advanced <span class="text-gradient">Phishing Link Detector</span>:<br>Analyze URLs Before You Click
     </h1>
     <p class="hero-subtitle">
-      Inspect any suspicious link, message text, or QR code before it touches your device. Our multi-vector heuristic engine detects brand impersonation, deceptive lookalike domains, concealed redirects, and credential harvesting traps in milliseconds.
+      Inspect any suspicious link, message text, or QR code before it touches your device. Our multi-vector heuristic
+      engine detects brand impersonation, deceptive lookalike domains, concealed redirects, and credential harvesting
+      traps in milliseconds.
     </p>
 
     <!-- Main Detector Application Card -->
@@ -74,16 +82,45 @@
         <!-- Mode Switcher Tabs -->
         <div class="detector-mode-tabs" role="tablist">
           <button id="mode-single-btn" class="mode-tab-btn active" data-mode="single" role="tab" aria-selected="true">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+              <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+            </svg>
             Single URL Inspector
           </button>
           <button id="mode-bulk-btn" class="mode-tab-btn" data-mode="bulk" role="tab" aria-selected="false">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+              <polyline points="14 2 14 8 20 8" />
+              <line x1="16" y1="13" x2="8" y2="13" />
+              <line x1="16" y1="17" x2="8" y2="17" />
+            </svg>
             Bulk & Email Text
           </button>
           <button id="mode-qr-btn" class="mode-tab-btn" data-mode="qr" role="tab" aria-selected="false">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="5" height="5" x="3" y="3" rx="1"/><rect width="5" height="5" x="16" y="3" rx="1"/><rect width="5" height="5" x="3" y="16" rx="1"/><path d="M21 16h-3a2 2 0 0 0-2 2v3"/><path d="M21 21v.01"/><path d="M12 7v3a2 2 0 0 1-2 2H7"/><path d="M3 12h.01"/><path d="M12 3h.01"/><path d="M12 16v.01"/><path d="M16 12h1"/><path d="M21 12v.01"/><path d="M12 21v-1"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect width="5" height="5" x="3" y="3" rx="1" />
+              <rect width="5" height="5" x="16" y="3" rx="1" />
+              <rect width="5" height="5" x="3" y="16" rx="1" />
+              <path d="M21 16h-3a2 2 0 0 0-2 2v3" />
+              <path d="M21 21v.01" />
+              <path d="M12 7v3a2 2 0 0 1-2 2H7" />
+              <path d="M3 12h.01" />
+              <path d="M12 3h.01" />
+              <path d="M12 16v.01" />
+              <path d="M16 12h1" />
+              <path d="M21 12v.01" />
+              <path d="M12 21v-1" />
+            </svg>
             QR Code (Quishing)
+          </button>
+          <button id="mode-db-btn" class="mode-tab-btn" data-mode="db" role="tab" aria-selected="false">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <ellipse cx="12" cy="5" rx="9" ry="3" />
+              <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3" />
+              <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" />
+            </svg>
+            Database & Intel
           </button>
         </div>
 
@@ -92,26 +129,29 @@
           <!-- Input Form -->
           <div class="scanner-input-wrapper">
             <div class="scanner-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+              </svg>
             </div>
-            <input 
-              type="text" 
-              id="url-input" 
-              class="scanner-input" 
-              placeholder="Paste or enter suspicious link (e.g., http://paypal.com.account-verification.xyz/login)..." 
-              autocomplete="off" 
-              spellcheck="false"
-            >
+            <input type="text" id="url-input" class="scanner-input"
+              placeholder="Paste or enter suspicious link (e.g., http://paypal.com.account-verification.xyz/login)..."
+              autocomplete="off" spellcheck="false">
             <div class="scanner-actions">
               <button id="paste-url-btn" class="scanner-tool-btn" title="Paste from clipboard">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
+                  <rect x="8" y="2" width="8" height="4" rx="1" ry="1" />
+                </svg>
                 <span>Paste</span>
               </button>
               <button id="clear-url-btn" class="scanner-tool-btn" title="Clear input">
                 <span>Clear</span>
               </button>
               <button id="scan-url-btn" class="scan-main-btn">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                  <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+                </svg>
                 <span>Analyze Link</span>
               </button>
             </div>
@@ -120,13 +160,18 @@
           <!-- Sample Quick Test Chips -->
           <div class="preset-chips-section">
             <span class="preset-label">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10" />
+                <line x1="12" y1="16" x2="12" y2="12" />
+                <line x1="12" y1="8" x2="12.01" y2="8" />
+              </svg>
               Quick Test Scenarios:
             </span>
             <button class="preset-chip safe" data-url="https://www.google.com/search?q=cybersecurity+training">
               <span>🟢</span> Legitimate (Google)
             </button>
-            <button class="preset-chip danger" data-url="http://paypal.com.account-update.xyz/login.php?user=victim@school.edu">
+            <button class="preset-chip danger"
+              data-url="http://paypal.com.account-update.xyz/login.php?user=victim@school.edu">
               <span>🔴</span> Fake PayPal (.xyz)
             </button>
             <button class="preset-chip danger" data-url="https://usps-tracking-parcel29.top/pay?fee=1.85">
@@ -164,11 +209,21 @@
             <!-- Header Bar -->
             <div class="scan-result-header">
               <div class="scan-target-url">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+                  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+                </svg>
                 <span id="res-target-url">http://example.com</span>
               </div>
-              <div class="scan-meta-badge">
-                <span id="res-scan-meta">Scan completed in 14ms • Heuristic Engine v2.4</span>
+              <div class="scan-meta-badge" style="display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap;">
+                <span id="res-scan-meta">Scan completed in 14ms • Heuristic Engine v2.5</span>
+                <span id="res-db-badge" class="db-saved-pill" style="display: none;">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/></svg>
+                  <span id="res-db-badge-text">Logged to SQLite</span>
+                </span>
+                <span id="res-dns-badge" class="dns-pill" style="display: none;">
+                  <span id="res-dns-badge-text">Live DNS: Active</span>
+                </span>
               </div>
             </div>
 
@@ -179,7 +234,8 @@
                 <div class="gauge-svg-wrap">
                   <svg class="gauge-svg" viewBox="0 0 170 170">
                     <circle class="gauge-bg-circle" cx="85" cy="85" r="75"></circle>
-                    <circle id="res-gauge-circle" class="gauge-fill-circle" cx="85" cy="85" r="75" stroke="#f43f5e"></circle>
+                    <circle id="res-gauge-circle" class="gauge-fill-circle" cx="85" cy="85" r="75" stroke="#f43f5e">
+                    </circle>
                   </svg>
                   <div class="gauge-content">
                     <div id="res-score-num" class="gauge-score">94</div>
@@ -194,13 +250,16 @@
                   <div id="res-verdict-pill" class="verdict-pill danger">
                     <span>🚨</span> DANGEROUS PHISHING LINK
                   </div>
-                  <span id="res-confidence-tag" style="font-size: 0.85rem; color: var(--text-dim); font-weight: 600;">High Confidence</span>
+                  <span id="res-confidence-tag"
+                    style="font-size: 0.85rem; color: var(--text-dim); font-weight: 600;">High Confidence</span>
                 </div>
                 <div id="res-verdict-desc" class="verdict-desc">
-                  This URL exhibits aggressive phishing characteristics, including unauthorized brand impersonation in subdomains and unencrypted credential harvesting keywords.
+                  This URL exhibits aggressive phishing characteristics, including unauthorized brand impersonation in
+                  subdomains and unencrypted credential harvesting keywords.
                 </div>
                 <div class="verdict-action-advice">
-                  <strong>Recommended Action:</strong> <span id="res-action-advice">DO NOT CLICK, DO NOT ENTER CREDENTIALS, AND NEVER DOWNLOAD ATTACHMENTS. Block this domain in your firewall.</span>
+                  <strong>Recommended Action:</strong> <span id="res-action-advice">DO NOT CLICK, DO NOT ENTER
+                    CREDENTIALS, AND NEVER DOWNLOAD ATTACHMENTS. Block this domain in your firewall.</span>
                 </div>
               </div>
             </div>
@@ -209,14 +268,16 @@
             <div class="dissector-container">
               <div class="dissector-title">
                 <span>🔬 URL Syntax & Component Deconstruction</span>
-                <span style="font-size: 0.78rem; text-transform: none; color: var(--text-dim);">Click any component token for forensic explanation</span>
+                <span style="font-size: 0.78rem; text-transform: none; color: var(--text-dim);">Click any component
+                  token for forensic explanation</span>
               </div>
               <div id="res-tokens-bar" class="tokens-bar">
                 <!-- Dynamically populated tokens -->
               </div>
               <div id="res-token-explainer" class="token-explainer-box">
                 <span>💡</span>
-                <span id="res-explainer-text">Click any of the highlighted URL component pills above to see why security engines analyze it.</span>
+                <span id="res-explainer-text">Click any of the highlighted URL component pills above to see why security
+                  engines analyze it.</span>
               </div>
             </div>
 
@@ -224,7 +285,8 @@
             <div>
               <div class="heuristics-section-title">
                 <span>🛡️ Forensic Heuristic Security Audits</span>
-                <span style="font-size: 0.82rem; font-weight: 500; color: var(--text-dim);">Automated In-Depth Rule Validation</span>
+                <span style="font-size: 0.82rem; font-weight: 500; color: var(--text-dim);">Automated In-Depth Rule
+                  Validation</span>
               </div>
               <div id="res-heuristics-grid" class="heuristics-grid">
                 <!-- Dynamically populated 10 checks -->
@@ -235,10 +297,15 @@
             <div class="defanged-box">
               <div class="defanged-content">
                 <div class="defanged-title">Defanged URL (Safe for SOC Incident Reports & Email Sharing):</div>
-                <div id="res-defanged-url" class="defanged-string">hxxp[://]paypal[.]com[.]account-update[.]xyz/login.php</div>
+                <div id="res-defanged-url" class="defanged-string">
+                  hxxp[://]paypal[.]com[.]account-update[.]xyz/login.php</div>
               </div>
-              <button id="copy-defanged-btn" class="scanner-tool-btn" style="padding: 0.6rem 1rem; border-color: var(--cyan-primary);">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+              <button id="copy-defanged-btn" class="scanner-tool-btn"
+                style="padding: 0.6rem 1rem; border-color: var(--cyan-primary);">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
+                  <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
+                </svg>
                 <span>Copy Defanged URL</span>
               </button>
             </div>
@@ -246,15 +313,25 @@
             <!-- Footer Action Buttons -->
             <div class="scan-footer-actions">
               <button id="copy-report-btn" class="btn btn-secondary">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                  <polyline points="14 2 14 8 20 8" />
+                </svg>
                 <span>Copy Incident Summary</span>
               </button>
               <button id="download-json-btn" class="btn btn-secondary">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                  <polyline points="7 10 12 15 17 10" />
+                  <line x1="12" y1="15" x2="12" y2="3" />
+                </svg>
                 <span>Download JSON Report</span>
               </button>
               <button id="scan-another-btn" class="btn btn-primary">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
+                  <path d="M3 3v5h5" />
+                </svg>
                 <span>Scan Another Link</span>
               </button>
             </div>
@@ -265,18 +342,19 @@
         <!-- 2. Bulk & Email Text Scanner Mode -->
         <div id="panel-bulk-mode" class="bulk-scanner-wrap">
           <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1rem;">
-            Paste an entire suspicious email message, SMS body, or a list of multiple URLs (one per line). The scanner automatically parses all links and generates a batch forensic risk evaluation.
+            Paste an entire suspicious email message, SMS body, or a list of multiple URLs (one per line). The scanner
+            automatically parses all links and generates a batch forensic risk evaluation.
           </p>
-          <textarea 
-            id="bulk-text-input" 
-            class="bulk-textarea" 
-            placeholder="Paste raw email body, text message, or list of URLs here...&#10;&#10;Example:&#10;Dear user, please review your pending invoice at http://invoice-portal-update.top/auth. For support, visit https://google.com/help or download the receipt at http://194.26.29.112:8080/file.exe"
-          ></textarea>
-          
-          <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center; justify-content: space-between;">
+          <textarea id="bulk-text-input" class="bulk-textarea"
+            placeholder="Paste raw email body, text message, or list of URLs here...&#10;&#10;Example:&#10;Dear user, please review your pending invoice at http://invoice-portal-update.top/auth. For support, visit https://google.com/help or download the receipt at http://194.26.29.112:8080/file.exe"></textarea>
+
+          <div
+            style="display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center; justify-content: space-between;">
             <div style="display: flex; gap: 0.5rem;">
               <button id="bulk-scan-btn" class="scan-main-btn">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+                </svg>
                 <span>Extract & Scan All Links</span>
               </button>
               <button id="bulk-clear-btn" class="scanner-tool-btn">Clear Text</button>
@@ -326,7 +404,11 @@
 
             <div style="margin-top: 1rem; display: flex; justify-content: flex-end; gap: 0.75rem;">
               <button id="bulk-export-csv-btn" class="btn btn-secondary">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                  <polyline points="7 10 12 15 17 10" />
+                  <line x1="12" y1="15" x2="12" y2="3" />
+                </svg>
                 <span>Export Results as CSV</span>
               </button>
             </div>
@@ -336,31 +418,164 @@
         <!-- 3. QR Code (Quishing) Scanner Mode -->
         <div id="panel-qr-mode" class="qr-scanner-wrap">
           <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.25rem;">
-            <strong>Quishing (QR Code Phishing)</strong> is rapidly rising in school campuses, parking meters, and deceptive physical flyers. Upload, drag-and-drop, or paste a QR code image to decode the concealed destination and inspect it for threats.
+            <strong>Quishing (QR Code Phishing)</strong> is rapidly rising in school campuses, parking meters, and
+            deceptive physical flyers. Upload, drag-and-drop, or paste a QR code image to decode the concealed
+            destination and inspect it for threats.
           </p>
 
           <div id="qr-dropzone" class="qr-dropzone">
             <svg class="qr-dropzone-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-              <rect width="5" height="5" x="3" y="3" rx="1"/><rect width="5" height="5" x="16" y="3" rx="1"/><rect width="5" height="5" x="3" y="16" rx="1"/>
-              <path d="M21 16h-3a2 2 0 0 0-2 2v3"/><path d="M21 21v.01"/><path d="M12 7v3a2 2 0 0 1-2 2H7"/><path d="M3 12h.01"/><path d="M12 3h.01"/><path d="M12 16v.01"/><path d="M16 12h1"/><path d="M21 12v.01"/><path d="M12 21v-1"/>
+              <rect width="5" height="5" x="3" y="3" rx="1" />
+              <rect width="5" height="5" x="16" y="3" rx="1" />
+              <rect width="5" height="5" x="3" y="16" rx="1" />
+              <path d="M21 16h-3a2 2 0 0 0-2 2v3" />
+              <path d="M21 21v.01" />
+              <path d="M12 7v3a2 2 0 0 1-2 2H7" />
+              <path d="M3 12h.01" />
+              <path d="M12 3h.01" />
+              <path d="M12 16v.01" />
+              <path d="M16 12h1" />
+              <path d="M21 12v.01" />
+              <path d="M12 21v-1" />
             </svg>
             <h4 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 0.4rem;">Drag & Drop QR Code Image Here</h4>
-            <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1.25rem;">Supports PNG, JPG, WEBP, or paste image directly from clipboard (Ctrl+V)</p>
+            <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1.25rem;">Supports PNG, JPG, WEBP, or
+              paste image directly from clipboard (Ctrl+V)</p>
             <input type="file" id="qr-file-input" accept="image/*" style="display: none;">
             <button id="qr-browse-btn" class="btn btn-secondary" type="button">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <polyline points="17 8 12 3 7 8" />
+                <line x1="12" y1="3" x2="12" y2="15" />
+              </svg>
               <span>Browse File</span>
             </button>
           </div>
 
           <!-- Hidden QR Canvas & Feedback -->
           <canvas id="qr-canvas" style="display: none;"></canvas>
-          <div id="qr-status-msg" style="margin-top: 1rem; font-size: 0.92rem; text-align: center; color: var(--text-muted);"></div>
-          
-          <div style="margin-top: 1.25rem; display: flex; justify-content: center; gap: 0.75rem;">
-            <button id="qr-sample-test-btn" class="preset-chip danger" style="padding: 0.5rem 1rem;">
-              <span>🧪</span> Test Sample Quishing QR Payload
-            </button>
+          <div id="qr-status-msg"
+            style="margin-top: 1rem; font-size: 0.92rem; text-align: center; color: var(--text-muted);"></div>
+
+          </div>
+        </div>
+
+        <!-- 4. Database & Threat Intelligence Mode -->
+        <div id="panel-db-mode" style="display: none;">
+          <!-- Backend & Database Status Bar -->
+          <div class="db-banner-box">
+            <div class="db-banner-info">
+              <div class="db-status-badge" id="db-conn-badge">
+                <span class="radar-dot" id="db-conn-dot" style="background:#10b981;box-shadow:0 0 10px #10b981;"></span>
+                <span id="db-conn-text">FastAPI Backend & SQLite Active</span>
+              </div>
+              <div class="db-dbfile-tag">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/></svg>
+                <span>Database: <strong>phishguard.db</strong> (Local SQLite)</span>
+              </div>
+            </div>
+            <div class="db-banner-links">
+              <a href="/docs" target="_blank" class="btn btn-secondary btn-sm" title="Interactive OpenAPI / Swagger Documentation">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                <span>Swagger Docs (/docs)</span>
+              </a>
+              <button id="db-refresh-btn" class="btn btn-secondary btn-sm" title="Refresh Live Records">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg>
+                <span>Refresh</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Real-Time Metrics Row -->
+          <div class="bulk-stats-row" style="margin-top: 1.25rem;">
+            <div class="bulk-stat-card">
+              <div id="db-stat-total" class="bulk-stat-num" style="color: var(--cyan-primary);">0</div>
+              <div class="bulk-stat-label">Total SQLite Scans</div>
+            </div>
+            <div class="bulk-stat-card">
+              <div id="db-stat-threats" class="bulk-stat-num" style="color: var(--rose-danger);">0</div>
+              <div class="bulk-stat-label">Threats Logged</div>
+            </div>
+            <div class="bulk-stat-card">
+              <div id="db-stat-safe" class="bulk-stat-num" style="color: var(--emerald-safe);">0</div>
+              <div class="bulk-stat-label">Safe Verified</div>
+            </div>
+            <div class="bulk-stat-card">
+              <div id="db-stat-reports" class="bulk-stat-num" style="color: var(--amber-warn);">0</div>
+              <div class="bulk-stat-label">Community Reports</div>
+            </div>
+          </div>
+
+          <!-- Section Header: Recent Scans -->
+          <div style="margin-top: 2rem; display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 0.5rem;">
+            <div>
+              <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.2rem;">Recent Persistent Scans</h3>
+              <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Historical URLs analyzed and persisted in SQLite `scans` table</p>
+            </div>
+          </div>
+
+          <div class="bulk-table-container" style="max-height: 280px; overflow-y: auto; margin-top: 0.75rem;">
+            <table class="bulk-table">
+              <thead>
+                <tr>
+                  <th style="width: 55px;">#ID</th>
+                  <th>Target URL / Domain</th>
+                  <th>Risk Rating</th>
+                  <th>Live DNS</th>
+                  <th>Timestamp</th>
+                  <th>Inspect</th>
+                </tr>
+              </thead>
+              <tbody id="db-scans-table-body">
+                <tr><td colspan="6" style="text-align: center; color: var(--text-muted); padding: 2rem;">Loading scan database records...</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Threat Reporting & Certificate Verification Split Cards -->
+          <div class="db-tools-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.25rem; margin-top: 2rem;">
+            <!-- Report Phish Card -->
+            <div class="db-tool-card">
+              <h4 style="font-size: 1.05rem; font-weight: 700; color: var(--text-main); display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.35rem;">
+                <span style="color: var(--rose-danger);">🚨</span> Report Threat to Database
+              </h4>
+              <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 0.75rem;">Submit newly discovered phishing traps to the persistent SQLite threat database.</p>
+              <form id="db-report-form" style="display: flex; flex-direction: column; gap: 0.6rem;">
+                <input type="text" id="db-report-url" class="scanner-input" placeholder="Suspicious link (e.g., https://fake-bank.click)..." style="font-size: 0.88rem; padding: 0.6rem 0.85rem;" required>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;">
+                  <select id="db-report-type" class="scanner-input" style="font-size: 0.88rem; padding: 0.6rem;">
+                    <option value="Brand Impersonation">Brand Spoofing</option>
+                    <option value="Credential Harvesting">Credential Harvesting</option>
+                    <option value="Quishing">Quishing (QR Scam)</option>
+                    <option value="Malware Dropper">Malware Dropper</option>
+                    <option value="Financial Fraud">Financial Fraud</option>
+                  </select>
+                  <input type="text" id="db-report-name" class="scanner-input" placeholder="Reporter Name" style="font-size: 0.88rem; padding: 0.6rem 0.85rem;" value="SOC Analyst">
+                </div>
+                <input type="text" id="db-report-notes" class="scanner-input" placeholder="Notes (e.g. Received via student email)" style="font-size: 0.88rem; padding: 0.6rem 0.85rem;">
+                <button type="submit" class="btn btn-primary" style="padding: 0.6rem 1rem; align-self: flex-start;">
+                  <span>Submit Threat</span>
+                </button>
+                <div id="db-report-status" style="font-size: 0.82rem; display: none;"></div>
+              </form>
+            </div>
+
+            <!-- Verify Certificate Card -->
+            <div class="db-tool-card">
+              <h4 style="font-size: 1.05rem; font-weight: 700; color: var(--text-main); display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.35rem;">
+                <span style="color: var(--cyan-primary);">🎓</span> Verify Security Certificate
+              </h4>
+              <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 0.75rem;">Verify authenticity of credentials stored in the `quiz_submissions` table.</p>
+              <div style="display: flex; gap: 0.5rem; margin-bottom: 0.75rem;">
+                <input type="text" id="db-cert-input" class="scanner-input" placeholder="Enter Certificate ID..." style="font-size: 0.88rem; padding: 0.6rem 0.85rem;">
+                <button id="db-cert-verify-btn" class="btn btn-secondary" type="button" style="white-space: nowrap; padding: 0.6rem 1rem;">
+                  <span>Verify</span>
+                </button>
+              </div>
+              <div id="db-cert-result" style="background: rgba(15, 23, 42, 0.6); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 0.75rem; font-size: 0.85rem; color: var(--text-muted); min-height: 80px;">
+                Enter a certificate code generated from the Quiz module to verify its database record.
+              </div>
+            </div>
           </div>
         </div>
 
@@ -373,7 +588,10 @@
     <div class="intel-stats-bar">
       <div class="intel-stat-box">
         <div class="card-icon cyan" style="margin-bottom: 0; flex-shrink: 0;">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10" />
+            <path d="m9 12 2 2 4-4" />
+          </svg>
         </div>
         <div>
           <div class="intel-stat-val" id="stat-links-scanned">142,890</div>
@@ -383,7 +601,11 @@
 
       <div class="intel-stat-box">
         <div class="card-icon rose" style="margin-bottom: 0; flex-shrink: 0;">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+            <line x1="12" y1="8" x2="12" y2="12" />
+            <line x1="12" y1="16" x2="12.01" y2="16" />
+          </svg>
         </div>
         <div>
           <div class="intel-stat-val" id="stat-phish-defanged">48,210</div>
@@ -393,7 +615,10 @@
 
       <div class="intel-stat-box">
         <div class="card-icon emerald" style="margin-bottom: 0; flex-shrink: 0;">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+            <polyline points="22 4 12 14.01 9 11.01" />
+          </svg>
         </div>
         <div>
           <div class="intel-stat-val">99.4%</div>
@@ -403,7 +628,10 @@
 
       <div class="intel-stat-box">
         <div class="card-icon amber" style="margin-bottom: 0; flex-shrink: 0;">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+            <polyline points="9 22 9 12 15 12 15 22" />
+          </svg>
         </div>
         <div>
           <div class="intel-stat-val">30+</div>
@@ -418,25 +646,33 @@
     <div class="section-header">
       <span class="section-tag">Interactive Anatomy</span>
       <h2 class="section-title">Anatomy of a Phishing Link</h2>
-      <p class="section-description">Scammers manipulate URL structures to trick the human eye. Study how malicious actors disguise domains vs how legitimate URLs are constructed.</p>
+      <p class="section-description">Scammers manipulate URL structures to trick the human eye. Study how malicious
+        actors disguise domains vs how legitimate URLs are constructed.</p>
     </div>
 
     <div class="anatomy-card">
       <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 0.5rem;">Four Common URL Deception Techniques</h3>
-      <p style="color: var(--text-muted); font-size: 0.95rem;">Always read URLs from the first single forward slash (<code>/</code>) backwards to find the TRUE registered domain!</p>
+      <p style="color: var(--text-muted); font-size: 0.95rem;">Always read URLs from the first single forward slash
+        (<code>/</code>) backwards to find the TRUE registered domain!</p>
 
       <div class="anatomy-visual-row">
         <!-- Technique 1: Subdomain Spoofing -->
         <div class="anatomy-example-box danger">
           <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem;">
-            <strong style="color:var(--rose-danger); font-size:1.05rem;">1. Subdomain Stuffing (Deceptive Brand Prefixes)</strong>
+            <strong style="color:var(--rose-danger); font-size:1.05rem;">1. Subdomain Stuffing (Deceptive Brand
+              Prefixes)</strong>
             <span class="preset-chip danger" style="padding:0.2rem 0.6rem;">High Risk</span>
           </div>
           <div class="anatomy-breakdown-code">
-            <span style="color:#94a3b8;">https://</span><span style="color:#f59e0b; font-weight:700;">paypal.com.account-verify.security-login.</span><span style="color:#f43f5e; font-weight:900; background:rgba(244,63,94,0.2); padding:0.15rem 0.4rem; border-radius:4px;">attacker-portal.xyz</span><span style="color:#38bdf8;">/signin.php</span>
+            <span style="color:#94a3b8;">https://</span><span
+              style="color:#f59e0b; font-weight:700;">paypal.com.account-verify.security-login.</span><span
+              style="color:#f43f5e; font-weight:900; background:rgba(244,63,94,0.2); padding:0.15rem 0.4rem; border-radius:4px;">attacker-portal.xyz</span><span
+              style="color:#38bdf8;">/signin.php</span>
           </div>
           <p style="font-size:0.88rem; color:var(--text-muted);">
-            <strong>How the trick works:</strong> The attacker places <code>paypal.com</code> in the <em>subdomain</em>. The browser does not connect to PayPal; it connects to the actual root domain <code>attacker-portal.xyz</code>!
+            <strong>How the trick works:</strong> The attacker places <code>paypal.com</code> in the <em>subdomain</em>.
+            The browser does not connect to PayPal; it connects to the actual root domain
+            <code>attacker-portal.xyz</code>!
           </p>
         </div>
 
@@ -447,38 +683,55 @@
             <span class="preset-chip danger" style="padding:0.2rem 0.6rem;">Critical Threat</span>
           </div>
           <div class="anatomy-breakdown-code">
-            <span style="color:#94a3b8;">https://</span><span style="color:#f43f5e; font-weight:900;">pаypal.com</span><span style="color:#94a3b8;"> (Punycode: </span><span style="color:#38bdf8; font-weight:700;">xn--pypal-4ve.com</span><span style="color:#94a3b8;">)</span>
+            <span style="color:#94a3b8;">https://</span><span
+              style="color:#f43f5e; font-weight:900;">pаypal.com</span><span style="color:#94a3b8;"> (Punycode:
+            </span><span style="color:#38bdf8; font-weight:700;">xn--pypal-4ve.com</span><span
+              style="color:#94a3b8;">)</span>
           </div>
           <p style="font-size:0.88rem; color:var(--text-muted);">
-            <strong>How the trick works:</strong> The first 'а' in <code>pаypal.com</code> is a Cyrillic character (U+0430), not standard Latin 'a'. To human eyes they look identical, but they route to completely different servers.
+            <strong>How the trick works:</strong> The first 'а' in <code>pаypal.com</code> is a Cyrillic character
+            (U+0430), not standard Latin 'a'. To human eyes they look identical, but they route to completely different
+            servers.
           </p>
         </div>
 
         <!-- Technique 3: HTTP Basic Auth Exploit (@ Delimiter) -->
         <div class="anatomy-example-box danger">
           <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem;">
-            <strong style="color:var(--rose-danger); font-size:1.05rem;">3. HTTP Basic Authentication Credential Trick (@ Symbol)</strong>
+            <strong style="color:var(--rose-danger); font-size:1.05rem;">3. HTTP Basic Authentication Credential Trick
+              (@ Symbol)</strong>
             <span class="preset-chip danger" style="padding:0.2rem 0.6rem;">High Risk</span>
           </div>
           <div class="anatomy-breakdown-code">
-            <span style="color:#94a3b8;">https://</span><span style="color:#94a3b8; text-decoration:line-through;">google.com</span><span style="color:#f43f5e; font-weight:900;">@</span><span style="color:#f43f5e; font-weight:900; background:rgba(244,63,94,0.2); padding:0.15rem 0.4rem; border-radius:4px;">malicious-phish.net</span><span style="color:#38bdf8;">/login</span>
+            <span style="color:#94a3b8;">https://</span><span
+              style="color:#94a3b8; text-decoration:line-through;">google.com</span><span
+              style="color:#f43f5e; font-weight:900;">@</span><span
+              style="color:#f43f5e; font-weight:900; background:rgba(244,63,94,0.2); padding:0.15rem 0.4rem; border-radius:4px;">malicious-phish.net</span><span
+              style="color:#38bdf8;">/login</span>
           </div>
           <p style="font-size:0.88rem; color:var(--text-muted);">
-            <strong>How the trick works:</strong> According to internet URL standards, everything before the <code>@</code> symbol is treated as a username/password, and the browser navigates directly to <code>malicious-phish.net</code>!
+            <strong>How the trick works:</strong> According to internet URL standards, everything before the
+            <code>@</code> symbol is treated as a username/password, and the browser navigates directly to
+            <code>malicious-phish.net</code>!
           </p>
         </div>
 
         <!-- Technique 4: Suspicious Disposable TLDs -->
         <div class="anatomy-example-box danger">
           <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem;">
-            <strong style="color:var(--rose-danger); font-size:1.05rem;">4. Disposable & High-Abuse Top-Level Domains (TLDs)</strong>
+            <strong style="color:var(--rose-danger); font-size:1.05rem;">4. Disposable & High-Abuse Top-Level Domains
+              (TLDs)</strong>
             <span class="preset-chip warn" style="padding:0.2rem 0.6rem;">High Risk</span>
           </div>
           <div class="anatomy-breakdown-code">
-            <span style="color:#94a3b8;">http://</span><span style="color:#e2e8f0; font-weight:700;">usps-parcel-track28</span><span style="color:#f43f5e; font-weight:900;">.top</span><span style="color:#38bdf8;">/clearance.php</span>
+            <span style="color:#94a3b8;">http://</span><span
+              style="color:#e2e8f0; font-weight:700;">usps-parcel-track28</span><span
+              style="color:#f43f5e; font-weight:900;">.top</span><span style="color:#38bdf8;">/clearance.php</span>
           </div>
           <p style="font-size:0.88rem; color:var(--text-muted);">
-            <strong>How the trick works:</strong> Attackers buy dirt-cheap or free domains under TLDs such as <code>.top</code>, <code>.xyz</code>, <code>.buzz</code>, <code>.tk</code>, or <code>.fit</code> because they can be abandoned and replaced within minutes after being blacklisted.
+            <strong>How the trick works:</strong> Attackers buy dirt-cheap or free domains under TLDs such as
+            <code>.top</code>, <code>.xyz</code>, <code>.buzz</code>, <code>.tk</code>, or <code>.fit</code> because
+            they can be abandoned and replaced within minutes after being blacklisted.
           </p>
         </div>
       </div>
@@ -493,52 +746,74 @@
       <div class="section-header">
         <span class="section-tag">Module 01</span>
         <h2 class="section-title">Introduction to Phishing</h2>
-        <p class="section-description">Demystifying one of the most common and damaging digital threats targeting students and organizations worldwide.</p>
+        <p class="section-description">Demystifying one of the most common and damaging digital threats targeting
+          students and organizations worldwide.</p>
       </div>
 
       <div class="grid-3">
         <!-- Card 1: What is phishing? -->
         <div class="card">
           <div class="card-icon cyan">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10" />
+              <path d="M12 16v-4M12 8h.01" />
+            </svg>
           </div>
           <h3 class="card-title">What is Phishing?</h3>
           <p class="card-text">
-            <strong>Phishing</strong> is a form of social engineering where cybercriminals masquerade as legitimate organizations (such as schools, banks, social networks, or tech companies) to manipulate victims into revealing confidential information.
+            <strong>Phishing</strong> is a form of social engineering where cybercriminals masquerade as legitimate
+            organizations (such as schools, banks, social networks, or tech companies) to manipulate victims into
+            revealing confidential information.
           </p>
           <div class="callout callout-info">
-            <strong>Key Insight:</strong> Just like an angler dangles bait to catch a fish, an attacker dangles a fake lure—such as a fake urgent message—to hook unsuspecting users.
+            <strong>Key Insight:</strong> Just like an angler dangles bait to catch a fish, an attacker dangles a fake
+            lure—such as a fake urgent message—to hook unsuspecting users.
           </div>
         </div>
 
         <!-- Card 2: Why is phishing dangerous? -->
         <div class="card">
           <div class="card-icon rose">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z" />
+              <line x1="12" y1="9" x2="12" y2="13" />
+              <line x1="12" y1="17" x2="12.01" y2="17" />
+            </svg>
           </div>
           <h3 class="card-title">Why is It Dangerous?</h3>
           <p class="card-text">
             A single careless click can have severe ripple effects:
           </p>
           <ul style="margin-top: 0.5rem; margin-left: 1.25rem; color: var(--text-muted); font-size: 0.92rem;">
-            <li><strong>Identity Theft:</strong> Attackers steal your SSN, student ID, and birth date to open fraudulent credit lines.</li>
+            <li><strong>Identity Theft:</strong> Attackers steal your SSN, student ID, and birth date to open fraudulent
+              credit lines.</li>
             <li><strong>Financial Loss:</strong> Direct draining of bank accounts or credit card fraud.</li>
-            <li><strong>Account Hijacking:</strong> Unauthorized takeover of email, gaming profiles, and social accounts.</li>
-            <li><strong>Malware & Ransomware:</strong> Silent installation of keyloggers that record every keystroke.</li>
+            <li><strong>Account Hijacking:</strong> Unauthorized takeover of email, gaming profiles, and social
+              accounts.</li>
+            <li><strong>Malware & Ransomware:</strong> Silent installation of keyloggers that record every keystroke.
+            </li>
           </ul>
         </div>
 
         <!-- Card 3: Why should everyone be aware? -->
         <div class="card">
           <div class="card-icon emerald">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+              <circle cx="9" cy="7" r="4" />
+              <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+              <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+            </svg>
           </div>
           <h3 class="card-title">Why Everyone Needs Awareness</h3>
           <p class="card-text">
-            Firewalls and antivirus scanners protect machines, but they cannot protect a human mind from psychological manipulation.
+            Firewalls and antivirus scanners protect machines, but they cannot protect a human mind from psychological
+            manipulation.
           </p>
-          <div class="callout callout-info" style="border-left-color: var(--emerald-safe); background: rgba(16, 185, 129, 0.08);">
-            <strong>Students are prime targets:</strong> Scammers frequently target students with fake scholarship grants, urgent campus portal resets, fake tuition refunds, and student loan relief scams.
+          <div class="callout callout-info"
+            style="border-left-color: var(--emerald-safe); background: rgba(16, 185, 129, 0.08);">
+            <strong>Students are prime targets:</strong> Scammers frequently target students with fake scholarship
+            grants, urgent campus portal resets, fake tuition refunds, and student loan relief scams.
           </div>
         </div>
       </div>
@@ -549,7 +824,8 @@
       <div class="section-header">
         <span class="section-tag">Module 02</span>
         <h2 class="section-title">How Phishing Works</h2>
-        <p class="section-description">Understanding the attack lifecycle and the underlying social engineering mechanics that trick human psychology.</p>
+        <p class="section-description">Understanding the attack lifecycle and the underlying social engineering
+          mechanics that trick human psychology.</p>
       </div>
 
       <!-- Social Engineering Primer -->
@@ -558,64 +834,84 @@
           <span style="color:var(--amber-warn);">🧠</span> The Psychology of Social Engineering
         </h3>
         <p class="card-text">
-          <strong>Social engineering</strong> is the art of manipulating people so they voluntarily give up confidential information or perform security-compromising actions. Instead of hacking complex computer software, cybercriminals hack the human mind by exploiting natural emotional triggers:
+          <strong>Social engineering</strong> is the art of manipulating people so they voluntarily give up confidential
+          information or perform security-compromising actions. Instead of hacking complex computer software,
+          cybercriminals hack the human mind by exploiting natural emotional triggers:
         </p>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-top: 1.25rem;">
-          <div style="background: rgba(255,255,255,0.03); padding: 1rem; border-radius: var(--radius-sm); border-left: 3px solid var(--rose-danger);">
+        <div
+          style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-top: 1.25rem;">
+          <div
+            style="background: rgba(255,255,255,0.03); padding: 1rem; border-radius: var(--radius-sm); border-left: 3px solid var(--rose-danger);">
             <strong>🚨 Fear & Urgency</strong>
-            <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.2rem;">"Your account will be deleted in 24 hours unless you verify immediately!" Creates panic so you don't stop to think.</p>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.2rem;">"Your account will be deleted
+              in 24 hours unless you verify immediately!" Creates panic so you don't stop to think.</p>
           </div>
-          <div style="background: rgba(255,255,255,0.03); padding: 1rem; border-radius: var(--radius-sm); border-left: 3px solid var(--amber-warn);">
+          <div
+            style="background: rgba(255,255,255,0.03); padding: 1rem; border-radius: var(--radius-sm); border-left: 3px solid var(--amber-warn);">
             <strong>🎁 Greed & Curiosity</strong>
-            <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.2rem;">"You won an unreleased iPhone!" or "Look who was caught on camera!" Baits users into impulsive clicks.</p>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.2rem;">"You won an unreleased iPhone!"
+              or "Look who was caught on camera!" Baits users into impulsive clicks.</p>
           </div>
-          <div style="background: rgba(255,255,255,0.03); padding: 1rem; border-radius: var(--radius-sm); border-left: 3px solid var(--cyan-primary);">
+          <div
+            style="background: rgba(255,255,255,0.03); padding: 1rem; border-radius: var(--radius-sm); border-left: 3px solid var(--cyan-primary);">
             <strong>🏛️ Authority & Trust</strong>
-            <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.2rem;">Impersonating school principals, university IT administrators, police, or bank directors to command obedience.</p>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.2rem;">Impersonating school
+              principals, university IT administrators, police, or bank directors to command obedience.</p>
           </div>
-          <div style="background: rgba(255,255,255,0.03); padding: 1rem; border-radius: var(--radius-sm); border-left: 3px solid var(--purple-accent);">
+          <div
+            style="background: rgba(255,255,255,0.03); padding: 1rem; border-radius: var(--radius-sm); border-left: 3px solid var(--purple-accent);">
             <strong>🤝 Helpfulness & Sympathy</strong>
-            <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.2rem;">Posing as a stranded friend needing emergency funds or a student asking you to vote in a school contest.</p>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.2rem;">Posing as a stranded friend
+              needing emergency funds or a student asking you to vote in a school contest.</p>
           </div>
         </div>
       </div>
 
       <!-- 5 Stages of Phishing Attack -->
-      <h3 style="font-size: 1.4rem; font-weight: 700; margin-bottom: 1rem;">The 5 Typical Stages of a Phishing Attack</h3>
+      <h3 style="font-size: 1.4rem; font-weight: 700; margin-bottom: 1rem;">The 5 Typical Stages of a Phishing Attack
+      </h3>
       <div class="lifecycle-stepper">
         <div class="step-card">
           <div class="step-badge">1</div>
           <div class="step-content">
             <h4>Stage 1: Target Reconnaissance & Research</h4>
-            <p>The attacker chooses their targets. For mass attacks, they scrape thousands of public student emails. For targeted attacks, they research social media profiles (LinkedIn, Instagram) to find your school, professors, and friends.</p>
+            <p>The attacker chooses their targets. For mass attacks, they scrape thousands of public student emails. For
+              targeted attacks, they research social media profiles (LinkedIn, Instagram) to find your school,
+              professors, and friends.</p>
           </div>
         </div>
         <div class="step-card">
           <div class="step-badge">2</div>
           <div class="step-content">
             <h4>Stage 2: Weaponization & Setup</h4>
-            <p>The attacker registers a deceptive lookalike domain (e.g., <code>portal-univ-edu.xyz</code> instead of <code>univ.edu</code>), builds an exact pixel-by-pixel clone of the real login page, and crafts convincing email templates with real logos.</p>
+            <p>The attacker registers a deceptive lookalike domain (e.g., <code>portal-univ-edu.xyz</code> instead of
+              <code>univ.edu</code>), builds an exact pixel-by-pixel clone of the real login page, and crafts convincing
+              email templates with real logos.
+            </p>
           </div>
         </div>
         <div class="step-card">
           <div class="step-badge">3</div>
           <div class="step-content">
             <h4>Stage 3: Distribution & Baiting</h4>
-            <p>The lure is cast! The attacker sends fake emails, SMS messages (Smishing), social media direct messages, or places automated phone calls (Vishing) embedded with urgency.</p>
+            <p>The lure is cast! The attacker sends fake emails, SMS messages (Smishing), social media direct messages,
+              or places automated phone calls (Vishing) embedded with urgency.</p>
           </div>
         </div>
         <div class="step-card">
           <div class="step-badge">4</div>
           <div class="step-content">
             <h4>Stage 4: Deception & Exploitation</h4>
-            <p>The unsuspecting victim clicks the link and arrives at the counterfeit web page. The victim types their username, password, or One-Time Password (OTP), believing they are logging in safely.</p>
+            <p>The unsuspecting victim clicks the link and arrives at the counterfeit web page. The victim types their
+              username, password, or One-Time Password (OTP), believing they are logging in safely.</p>
           </div>
         </div>
         <div class="step-card">
           <div class="step-badge">5</div>
           <div class="step-content">
             <h4>Stage 5: Exfiltration & Harm</h4>
-            <p>The attacker captures the submitted credentials in real-time, takes over the account, accesses private emails/grades, drains funds, or leverages the compromised mailbox to phish other students.</p>
+            <p>The attacker captures the submitted credentials in real-time, takes over the account, accesses private
+              emails/grades, drains funds, or leverages the compromised mailbox to phish other students.</p>
           </div>
         </div>
       </div>
@@ -626,73 +922,100 @@
       <div class="section-header">
         <span class="section-tag">Module 03</span>
         <h2 class="section-title">Common Types of Phishing</h2>
-        <p class="section-description">Attackers evolve their tactics across different communication mediums. Learn to recognize each form.</p>
+        <p class="section-description">Attackers evolve their tactics across different communication mediums. Learn to
+          recognize each form.</p>
       </div>
 
       <div class="grid-3">
         <!-- 1. Email Phishing -->
         <div class="card">
           <div class="card-icon cyan">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect width="20" height="16" x="2" y="4" rx="2" />
+              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+            </svg>
           </div>
           <h3 class="card-title">1. Email Phishing</h3>
           <p class="card-text">
-            The most common mass attack. Deceptive emails sent indiscriminately to thousands of recipients mimicking trusted brands (Netflix, Amazon, Google, Banks) asking you to "update billing" or "restore access".
+            The most common mass attack. Deceptive emails sent indiscriminately to thousands of recipients mimicking
+            trusted brands (Netflix, Amazon, Google, Banks) asking you to "update billing" or "restore access".
           </p>
         </div>
 
         <!-- 2. Spear Phishing -->
         <div class="card">
           <div class="card-icon rose">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10" />
+              <circle cx="12" cy="12" r="6" />
+              <circle cx="12" cy="12" r="2" />
+            </svg>
           </div>
           <h3 class="card-title">2. Spear Phishing</h3>
           <p class="card-text">
-            A laser-focused, customized attack. The attacker targets a specific individual or team using personal details—such as mentioning your current course syllabus, your professor's actual name, or ongoing student club events.
+            A laser-focused, customized attack. The attacker targets a specific individual or team using personal
+            details—such as mentioning your current course syllabus, your professor's actual name, or ongoing student
+            club events.
           </p>
         </div>
 
         <!-- 3. Smishing -->
         <div class="card">
           <div class="card-icon emerald">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect width="14" height="20" x="5" y="2" rx="2" ry="2" />
+              <path d="M12 18h.01" />
+            </svg>
           </div>
           <h3 class="card-title">3. Smishing (SMS Phishing)</h3>
           <p class="card-text">
-            Phishing conducted via text messages (SMS). Common lures include fake package delivery failure notices (USPS/FedEx), urgent bank security alerts, or fake toll road unpaid fines containing malicious shortlinks.
+            Phishing conducted via text messages (SMS). Common lures include fake package delivery failure notices
+            (USPS/FedEx), urgent bank security alerts, or fake toll road unpaid fines containing malicious shortlinks.
           </p>
         </div>
 
         <!-- 4. Vishing -->
         <div class="card">
           <div class="card-icon amber">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path
+                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+            </svg>
           </div>
           <h3 class="card-title">4. Vishing (Voice Phishing)</h3>
           <p class="card-text">
-            Attacks carried out via phone calls or VoIP. Scammers impersonate tax agencies, bank fraud investigators, or tech support agents demanding immediate payment via wire transfer or gift cards to resolve a fake crisis.
+            Attacks carried out via phone calls or VoIP. Scammers impersonate tax agencies, bank fraud investigators, or
+            tech support agents demanding immediate payment via wire transfer or gift cards to resolve a fake crisis.
           </p>
         </div>
 
         <!-- 5. Clone Phishing -->
         <div class="card">
           <div class="card-icon purple">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
+              <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
+            </svg>
           </div>
           <h3 class="card-title">5. Clone Phishing</h3>
           <p class="card-text">
-            Attackers take a real, previously delivered legitimate email (like a university receipt or assignment handout), clone its layout and copy, but replace the attached file or hyperlinks with malware and credential stealers.
+            Attackers take a real, previously delivered legitimate email (like a university receipt or assignment
+            handout), clone its layout and copy, but replace the attached file or hyperlinks with malware and credential
+            stealers.
           </p>
         </div>
 
         <!-- 6. Social Media Phishing -->
         <div class="card">
           <div class="card-icon cyan">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+            </svg>
           </div>
           <h3 class="card-title">6. Social Media Phishing</h3>
           <p class="card-text">
-            Involves fake social profiles, compromised friend accounts, fake giveaways, or rogue quiz apps on Instagram, TikTok, Discord, and Snapchat designed to steal session tokens, passwords, or personal identity details.
+            Involves fake social profiles, compromised friend accounts, fake giveaways, or rogue quiz apps on Instagram,
+            TikTok, Discord, and Snapchat designed to steal session tokens, passwords, or personal identity details.
           </p>
         </div>
       </div>
@@ -703,7 +1026,8 @@
       <div class="section-header">
         <span class="section-tag">Module 04</span>
         <h2 class="section-title">How to Identify Phishing: Common Warning Signs</h2>
-        <p class="section-description">Train your critical thinking. Look out for these 7 key forensic indicators whenever reviewing incoming messages.</p>
+        <p class="section-description">Train your critical thinking. Look out for these 7 key forensic indicators
+          whenever reviewing incoming messages.</p>
       </div>
 
       <div class="warning-signs-grid">
@@ -711,7 +1035,8 @@
           <span class="warning-icon">⚠️</span>
           <div>
             <h4>1. Urgent or Threatening Language</h4>
-            <p>Phrases like <em>"Account suspended in 24 hours!"</em>, <em>"Legal action pending"</em>, or <em>"Act now or lose access"</em> are designed to short-circuit calm rational judgment.</p>
+            <p>Phrases like <em>"Account suspended in 24 hours!"</em>, <em>"Legal action pending"</em>, or <em>"Act now
+                or lose access"</em> are designed to short-circuit calm rational judgment.</p>
           </div>
         </div>
 
@@ -719,7 +1044,9 @@
           <span class="warning-icon">📧</span>
           <div>
             <h4>2. Suspicious Sender Addresses</h4>
-            <p>Inspect the actual email domain after the '@' symbol. Look for subtle misspellings (typosquatting) like <code>@micros0ft.com</code>, <code>@support-google.net</code>, or unrelated generic domains.</p>
+            <p>Inspect the actual email domain after the '@' symbol. Look for subtle misspellings (typosquatting) like
+              <code>@micros0ft.com</code>, <code>@support-google.net</code>, or unrelated generic domains.
+            </p>
           </div>
         </div>
 
@@ -727,7 +1054,8 @@
           <span class="warning-icon">📎</span>
           <div>
             <h4>3. Unexpected Attachments</h4>
-            <p>Unsolicited files ending in <code>.exe</code>, <code>.scr</code>, <code>.vbs</code>, <code>.zip</code>, or macro-enabled documents (<code>.docm</code>, <code>.xlsm</code>) frequently carry malware payloads.</p>
+            <p>Unsolicited files ending in <code>.exe</code>, <code>.scr</code>, <code>.vbs</code>, <code>.zip</code>,
+              or macro-enabled documents (<code>.docm</code>, <code>.xlsm</code>) frequently carry malware payloads.</p>
           </div>
         </div>
 
@@ -735,7 +1063,8 @@
           <span class="warning-icon">🔗</span>
           <div>
             <h4>4. Strange or Shortened Links</h4>
-            <p>Hover over hyperlinks before clicking! Displayed text may say <code>paypal.com</code> while the actual hyperlink destination directs to an untrusted domain or generic URL shortener.</p>
+            <p>Hover over hyperlinks before clicking! Displayed text may say <code>paypal.com</code> while the actual
+              hyperlink destination directs to an untrusted domain or generic URL shortener.</p>
           </div>
         </div>
 
@@ -743,7 +1072,8 @@
           <span class="warning-icon">🔑</span>
           <div>
             <h4>5. Requests for Passwords, OTPs, or Banking Info</h4>
-            <p>Legitimate organizations, schools, and banks will <strong>never</strong> ask you to verify passwords, PINs, or One-Time Passwords (OTP) via email, text, or phone.</p>
+            <p>Legitimate organizations, schools, and banks will <strong>never</strong> ask you to verify passwords,
+              PINs, or One-Time Passwords (OTP) via email, text, or phone.</p>
           </div>
         </div>
 
@@ -751,7 +1081,8 @@
           <span class="warning-icon">✍️</span>
           <div>
             <h4>6. Spelling & Grammatical Mistakes</h4>
-            <p>Awkward phrasing, inconsistent fonts, broken punctuation, or generic greetings like <em>"Dear Valued Customer"</em> instead of your actual student name.</p>
+            <p>Awkward phrasing, inconsistent fonts, broken punctuation, or generic greetings like <em>"Dear Valued
+                Customer"</em> instead of your actual student name.</p>
           </div>
         </div>
 
@@ -759,7 +1090,8 @@
           <span class="warning-icon">🎁</span>
           <div>
             <h4>7. Offers Too Good To Be True</h4>
-            <p>Unsolicited notices claiming you have won a $1,000 lottery, a random student grant, or an exclusive high-paying work-from-home job with no interview required.</p>
+            <p>Unsolicited notices claiming you have won a $1,000 lottery, a random student grant, or an exclusive
+              high-paying work-from-home job with no interview required.</p>
           </div>
         </div>
       </div>
@@ -770,7 +1102,8 @@
       <div class="section-header">
         <span class="section-tag">Module 05</span>
         <h2 class="section-title">Realistic Examples & Phishing Lab</h2>
-        <p class="section-description">Interactive safe simulations of real-world attacks. Toggle the red flag inspector to reveal exactly how scammers construct their deceptive traps.</p>
+        <p class="section-description">Interactive safe simulations of real-world attacks. Toggle the red flag inspector
+          to reveal exactly how scammers construct their deceptive traps.</p>
       </div>
 
       <div class="sim-container">
@@ -809,7 +1142,8 @@
                 <div class="email-meta-row">
                   <span class="email-meta-label">From:</span>
                   <span class="email-meta-val">
-                    Campus IT Support &lt;<span class="rf-highlight">it-support@univ-portal-security-alert.org<span class="rf-badge">🚩 Red Flag 1</span></span>&gt;
+                    Campus IT Support &lt;<span class="rf-highlight">it-support@univ-portal-security-alert.org<span
+                        class="rf-badge">🚩 Red Flag 1</span></span>&gt;
                   </span>
                 </div>
                 <div class="email-meta-row">
@@ -819,32 +1153,41 @@
                 <div class="email-meta-row">
                   <span class="email-meta-label">Subject:</span>
                   <span class="email-meta-val">
-                    <span class="rf-highlight">URGENT: Your Campus Account Will Be Terminated in 24 Hours!<span class="rf-badge">🚩 Red Flag 2</span></span>
+                    <span class="rf-highlight">URGENT: Your Campus Account Will Be Terminated in 24 Hours!<span
+                        class="rf-badge">🚩 Red Flag 2</span></span>
                   </span>
                 </div>
               </div>
 
               <div class="email-body">
-                <p><span class="rf-highlight">Dear Valued University User,<span class="rf-badge">🚩 Red Flag 3</span></span></p>
+                <p><span class="rf-highlight">Dear Valued University User,<span class="rf-badge">🚩 Red Flag
+                      3</span></span></p>
                 <br>
                 <p>
-                  Our server maintenance detected suspicious login attempts from an unauthorized IP address. To prevent permanent deactivation of your student email, course access, and grade history, you are required to verify your student credentials immediately.
+                  Our server maintenance detected suspicious login attempts from an unauthorized IP address. To prevent
+                  permanent deactivation of your student email, course access, and grade history, you are required to
+                  verify your student credentials immediately.
                 </p>
 
                 <div class="email-content-box" style="text-align: center;">
-                  <p style="margin-bottom: 1rem; font-weight: 600;">Failure to confirm within 24 hours will result in permanent deletion of your university records.</p>
+                  <p style="margin-bottom: 1rem; font-weight: 600;">Failure to confirm within 24 hours will result in
+                    permanent deletion of your university records.</p>
                   <a href="javascript:void(0)" class="btn btn-danger rf-highlight" style="text-decoration: none;">
                     Click Here to Validate Student ID & Password
                     <span class="rf-badge">🚩 Red Flag 4</span>
                   </a>
                   <p style="margin-top: 0.75rem; font-size: 0.8rem; color: var(--text-dim);">
-                    Destination preview: <span class="rf-highlight">http://portal-verify-login.xyz/auth?student=alex<span class="rf-badge">🚩 Red Flag 5</span></span>
+                    Destination preview: <span
+                      class="rf-highlight">http://portal-verify-login.xyz/auth?student=alex<span class="rf-badge">🚩 Red
+                        Flag 5</span></span>
                   </p>
                 </div>
 
-                <p><span class="rf-highlight">Please find attached Security_Update_Patch.exe for your laptop.<span class="rf-badge">🚩 Red Flag 6</span></span></p>
+                <p><span class="rf-highlight">Please find attached Security_Update_Patch.exe for your laptop.<span
+                      class="rf-badge">🚩 Red Flag 6</span></span></p>
                 <br>
-                <p>Warm regards,<br><strong>Campus IT Service Desk</strong><br><em>Official Automated Dispatcher</em></p>
+                <p>Warm regards,<br><strong>Campus IT Service Desk</strong><br><em>Official Automated Dispatcher</em>
+                </p>
               </div>
             </div>
 
@@ -854,35 +1197,41 @@
                 <div class="flag-exp-num">1</div>
                 <div class="flag-exp-text">
                   <h5>Suspicious Spoofed Domain</h5>
-                  <p>The sender address is <code>@univ-portal-security-alert.org</code> instead of the university's authentic domain (<code>@state-university.edu</code>). Anyone can register a fake lookalike domain.</p>
+                  <p>The sender address is <code>@univ-portal-security-alert.org</code> instead of the university's
+                    authentic domain (<code>@state-university.edu</code>). Anyone can register a fake lookalike domain.
+                  </p>
                 </div>
               </div>
               <div class="flag-exp-item">
                 <div class="flag-exp-num">2</div>
                 <div class="flag-exp-text">
                   <h5>Manufactured Artificial Panic & Urgency</h5>
-                  <p>Threatening account deletion in 24 hours panics students during exam periods, pushing them to act before verifying with their school IT office.</p>
+                  <p>Threatening account deletion in 24 hours panics students during exam periods, pushing them to act
+                    before verifying with their school IT office.</p>
                 </div>
               </div>
               <div class="flag-exp-item">
                 <div class="flag-exp-num">3</div>
                 <div class="flag-exp-text">
                   <h5>Impersonal / Generic Salutation</h5>
-                  <p>Universities know your student name and address you directly (e.g., "Dear Alex,"). Phishing emails use mass generic greetings like "Dear Valued University User".</p>
+                  <p>Universities know your student name and address you directly (e.g., "Dear Alex,"). Phishing emails
+                    use mass generic greetings like "Dear Valued University User".</p>
                 </div>
               </div>
               <div class="flag-exp-item">
                 <div class="flag-exp-num">4 & 5</div>
                 <div class="flag-exp-text">
                   <h5>Deceptive Destination Link</h5>
-                  <p>The link leads to an unverified top-level domain (<code>.xyz</code>) over insecure HTTP instead of the university's official single-sign-on portal.</p>
+                  <p>The link leads to an unverified top-level domain (<code>.xyz</code>) over insecure HTTP instead of
+                    the university's official single-sign-on portal.</p>
                 </div>
               </div>
               <div class="flag-exp-item">
                 <div class="flag-exp-num">6</div>
                 <div class="flag-exp-text">
                   <h5>Dangerous Executable Attachment (.exe)</h5>
-                  <p>Official IT departments never distribute software updates as raw <code>.exe</code> files in emails. This is a trojan or infostealer.</p>
+                  <p>Official IT departments never distribute software updates as raw <code>.exe</code> files in emails.
+                    This is a trojan or infostealer.</p>
                 </div>
               </div>
             </div>
@@ -893,7 +1242,8 @@
             <div class="sim-toolbar">
               <div class="sim-scenario-info">
                 <h3>Scenario 2: Package Delivery Smishing</h3>
-                <p>A student receives an unexpected text message on their smartphone regarding an urgent parcel hold.</p>
+                <p>A student receives an unexpected text message on their smartphone regarding an urgent parcel hold.
+                </p>
               </div>
               <button class="red-flags-toggle">
                 <span>🔍</span><span>Reveal Red Flags</span>
@@ -908,10 +1258,14 @@
               </div>
               <div class="sms-thread">
                 <div class="sms-bubble">
-                  <strong>USPS Notification:</strong> Your parcel #US-83921 cannot be dispatched due to an incomplete street address.<br><br>
-                  <span class="rf-highlight">Action required within 12 hours<span class="rf-badge">🚩 Red Flag 2</span></span> to avoid return to sender.<br><br>
-                  Please confirm your delivery address and pay <span class="rf-highlight">$1.95 redelivery clearance fee<span class="rf-badge">🚩 Red Flag 3</span></span> at: <br>
-                  <span class="rf-highlight">https://usps-parcel-dispatch9.top/track<span class="rf-badge">🚩 Red Flag 4</span></span>
+                  <strong>USPS Notification:</strong> Your parcel #US-83921 cannot be dispatched due to an incomplete
+                  street address.<br><br>
+                  <span class="rf-highlight">Action required within 12 hours<span class="rf-badge">🚩 Red Flag
+                      2</span></span> to avoid return to sender.<br><br>
+                  Please confirm your delivery address and pay <span class="rf-highlight">$1.95 redelivery clearance
+                    fee<span class="rf-badge">🚩 Red Flag 3</span></span> at: <br>
+                  <span class="rf-highlight">https://usps-parcel-dispatch9.top/track<span class="rf-badge">🚩 Red Flag
+                      4</span></span>
                 </div>
               </div>
             </div>
@@ -921,28 +1275,33 @@
                 <div class="flag-exp-num">1</div>
                 <div class="flag-exp-text">
                   <h5>Random Unregistered Number</h5>
-                  <p>USPS uses official 5-digit SMS short codes (like 28777), never arbitrary 10-digit toll-free or international numbers.</p>
+                  <p>USPS uses official 5-digit SMS short codes (like 28777), never arbitrary 10-digit toll-free or
+                    international numbers.</p>
                 </div>
               </div>
               <div class="flag-exp-item">
                 <div class="flag-exp-num">2</div>
                 <div class="flag-exp-text">
                   <h5>False Urgency</h5>
-                  <p>Creating an artificial 12-hour deadline to prevent victims from calmly checking whether they actually ordered a package.</p>
+                  <p>Creating an artificial 12-hour deadline to prevent victims from calmly checking whether they
+                    actually ordered a package.</p>
                 </div>
               </div>
               <div class="flag-exp-item">
                 <div class="flag-exp-num">3</div>
                 <div class="flag-exp-text">
                   <h5>Micro-Fee Credit Card Bait</h5>
-                  <p>Asking for a tiny fee ($1.95) makes victims think "it's only $2, no big deal!" But the fake payment portal captures your complete card number, expiration, and CVV code.</p>
+                  <p>Asking for a tiny fee ($1.95) makes victims think "it's only $2, no big deal!" But the fake payment
+                    portal captures your complete card number, expiration, and CVV code.</p>
                 </div>
               </div>
               <div class="flag-exp-item">
                 <div class="flag-exp-num">4</div>
                 <div class="flag-exp-text">
                   <h5>Lookalike Fraudulent Domain</h5>
-                  <p>The genuine postal service website is <code>usps.com</code>. The domain here is <code>usps-parcel-dispatch9.top</code>, an inexpensive fraudulent domain registered overseas.</p>
+                  <p>The genuine postal service website is <code>usps.com</code>. The domain here is
+                    <code>usps-parcel-dispatch9.top</code>, an inexpensive fraudulent domain registered overseas.
+                  </p>
                 </div>
               </div>
             </div>
@@ -969,25 +1328,32 @@
                 </div>
                 <div class="browser-url-input">
                   <span>🔒</span>
-                  <span class="rf-highlight">http://accounts.google.com.user-verify-session9.biz/auth/login<span class="rf-badge">🚩 Red Flag 1</span></span>
+                  <span class="rf-highlight">http://accounts.google.com.user-verify-session9.biz/auth/login<span
+                      class="rf-badge">🚩 Red Flag 1</span></span>
                 </div>
               </div>
 
               <div class="browser-page-body">
                 <div class="fake-login-card">
-                  <div style="font-size: 2rem; margin-bottom: 0.5rem;">G<span style="color:#ea4335">o</span><span style="color:#fbbc05">o</span>g<span style="color:#34a853">l</span><span style="color:#ea4335">e</span></div>
+                  <div style="font-size: 2rem; margin-bottom: 0.5rem;">G<span style="color:#ea4335">o</span><span
+                      style="color:#fbbc05">o</span>g<span style="color:#34a853">l</span><span
+                      style="color:#ea4335">e</span></div>
                   <h4 style="font-size: 1.15rem; margin-bottom: 0.35rem;">Sign in to view shared document</h4>
-                  <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1.5rem;">Continue to Google Docs Cloud</p>
+                  <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1.5rem;">Continue to Google
+                    Docs Cloud</p>
 
-                  <input type="text" class="fake-login-input" placeholder="Email or phone" value="alex.student@gmail.com" readonly>
-                  <input type="password" class="fake-login-input" placeholder="Enter your password" value="••••••••••••" readonly>
+                  <input type="text" class="fake-login-input" placeholder="Email or phone"
+                    value="alex.student@gmail.com" readonly>
+                  <input type="password" class="fake-login-input" placeholder="Enter your password" value="••••••••••••"
+                    readonly>
 
                   <div style="margin-bottom: 1.25rem;">
                     <span class="rf-highlight" style="font-size: 0.85rem; color: var(--rose-danger);">
                       ⚠️ Also enter your 6-digit Authenticator OTP code to proceed:
                       <span class="rf-badge">🚩 Red Flag 2</span>
                     </span>
-                    <input type="text" class="fake-login-input" placeholder="6-Digit OTP" value="592-184" readonly style="margin-top: 0.5rem; text-align: center; font-weight: 700; letter-spacing: 2px;">
+                    <input type="text" class="fake-login-input" placeholder="6-Digit OTP" value="592-184" readonly
+                      style="margin-top: 0.5rem; text-align: center; font-weight: 700; letter-spacing: 2px;">
                   </div>
 
                   <button class="btn btn-primary" style="width: 100%; justify-content: center;">Sign In</button>
@@ -1000,14 +1366,18 @@
                 <div class="flag-exp-num">1</div>
                 <div class="flag-exp-text">
                   <h5>Subdomain Deception & Insecure Protocol</h5>
-                  <p>Look carefully at the domain structure! Attackers place <code>accounts.google.com</code> at the front as a subdomain, but the real registered domain before the slash is <code>user-verify-session9.biz</code>. Google never hosts sign-ins on <code>.biz</code> domains!</p>
+                  <p>Look carefully at the domain structure! Attackers place <code>accounts.google.com</code> at the
+                    front as a subdomain, but the real registered domain before the slash is
+                    <code>user-verify-session9.biz</code>. Google never hosts sign-ins on <code>.biz</code> domains!
+                  </p>
                 </div>
               </div>
               <div class="flag-exp-item">
                 <div class="flag-exp-num">2</div>
                 <div class="flag-exp-text">
                   <h5>Real-Time 2FA / OTP Interception (Reverse Proxy Phishing)</h5>
-                  <p>Modern phishing toolkits (like Evilginx) prompt for your OTP simultaneously. As soon as you type your code, the hacker forwards it to Google to capture your authenticated session cookie!</p>
+                  <p>Modern phishing toolkits (like Evilginx) prompt for your OTP simultaneously. As soon as you type
+                    your code, the hacker forwards it to Google to capture your authenticated session cookie!</p>
                 </div>
               </div>
             </div>
@@ -1036,14 +1406,18 @@
 
               <div class="social-dm-content">
                 <div class="sms-bubble">
-                  Hey Alex!! 😱 <span class="rf-highlight">OMG is this really you in this video?!<span class="rf-badge">🚩 Red Flag 1</span></span> Why did someone upload this about you?? LOL you look crazy in it 😂
+                  Hey Alex!! 😱 <span class="rf-highlight">OMG is this really you in this video?!<span
+                      class="rf-badge">🚩 Red Flag 1</span></span> Why did someone upload this about you?? LOL you look
+                  crazy in it 😂
                 </div>
                 <div class="sms-bubble">
                   Look before they take it down: <br>
-                  <span class="rf-highlight">https://bit.ly/video-viral-leak-92<span class="rf-badge">🚩 Red Flag 2</span></span>
+                  <span class="rf-highlight">https://bit.ly/video-viral-leak-92<span class="rf-badge">🚩 Red Flag
+                      2</span></span>
                 </div>
                 <div class="sms-bubble">
-                  <span class="rf-highlight">Hurry click it, everyone at school is talking about it!<span class="rf-badge">🚩 Red Flag 3</span></span>
+                  <span class="rf-highlight">Hurry click it, everyone at school is talking about it!<span
+                      class="rf-badge">🚩 Red Flag 3</span></span>
                 </div>
               </div>
             </div>
@@ -1053,21 +1427,24 @@
                 <div class="flag-exp-num">1</div>
                 <div class="flag-exp-text">
                   <h5>High-Emotion Social Bait</h5>
-                  <p>Playing on embarrassment and curiosity ("is this you in this video?"). This is a classic automated bot script used when an account has been hijacked.</p>
+                  <p>Playing on embarrassment and curiosity ("is this you in this video?"). This is a classic automated
+                    bot script used when an account has been hijacked.</p>
                 </div>
               </div>
               <div class="flag-exp-item">
                 <div class="flag-exp-num">2</div>
                 <div class="flag-exp-text">
                   <h5>Obfuscated Shortlink (bit.ly)</h5>
-                  <p>Shortened links hide the actual malicious URL destination. Clicking this takes you to a fake Instagram login page that steals your password.</p>
+                  <p>Shortened links hide the actual malicious URL destination. Clicking this takes you to a fake
+                    Instagram login page that steals your password.</p>
                 </div>
               </div>
               <div class="flag-exp-item">
                 <div class="flag-exp-num">3</div>
                 <div class="flag-exp-text">
                   <h5>Social Pressure ("Everyone at school is talking about it")</h5>
-                  <p>Creates FOMO (fear of missing out) and social embarrassment to prevent you from contacting your friend via another app or in person to verify.</p>
+                  <p>Creates FOMO (fear of missing out) and social embarrassment to prevent you from contacting your
+                    friend via another app or in person to verify.</p>
                 </div>
               </div>
             </div>
@@ -1081,7 +1458,8 @@
       <div class="section-header">
         <span class="section-tag">Module 06</span>
         <h2 class="section-title">Phishing vs. Legitimate Messages</h2>
-        <p class="section-description">A quick forensic reference guide comparing genuine communications against deceptive phishing attempts.</p>
+        <p class="section-description">A quick forensic reference guide comparing genuine communications against
+          deceptive phishing attempts.</p>
       </div>
 
       <div class="comparison-wrapper">
@@ -1096,43 +1474,62 @@
           <tbody>
             <tr>
               <td><strong>Sender Address</strong></td>
-              <td>Matches the authentic registered domain exactly (e.g., <code>@apple.com</code> or <code>@university.edu</code>). Verified sender badges where supported.</td>
-              <td>Misspelled domains, hyphens, or random domains (e.g., <code>@apple-support-verify.com</code>, <code>@gmail.com</code>).</td>
+              <td>Matches the authentic registered domain exactly (e.g., <code>@apple.com</code> or
+                <code>@university.edu</code>). Verified sender badges where supported.
+              </td>
+              <td>Misspelled domains, hyphens, or random domains (e.g., <code>@apple-support-verify.com</code>,
+                <code>@gmail.com</code>).
+              </td>
             </tr>
             <tr>
               <td><strong>Salutation / Greeting</strong></td>
-              <td>Personalized with your verified first and last name or account number (e.g., <em>"Hello Alex Johnson"</em>).</td>
-              <td>Generic, impersonal greetings like <em>"Dear Customer"</em>, <em>"Dear Student"</em>, or just your email prefix.</td>
+              <td>Personalized with your verified first and last name or account number (e.g., <em>"Hello Alex
+                  Johnson"</em>).</td>
+              <td>Generic, impersonal greetings like <em>"Dear Customer"</em>, <em>"Dear Student"</em>, or just your
+                email prefix.</td>
             </tr>
             <tr>
               <td><strong>Sense of Urgency</strong></td>
-              <td>Calm, informative tone. Offers reasonable timelines and clear contact options without aggressive deadlines.</td>
-              <td>Extreme artificial urgency: <em>"Account suspended within 24 hours!"</em>, <em>"Arrest warrant issued"</em>, panic-inducing threats.</td>
+              <td>Calm, informative tone. Offers reasonable timelines and clear contact options without aggressive
+                deadlines.</td>
+              <td>Extreme artificial urgency: <em>"Account suspended within 24 hours!"</em>, <em>"Arrest warrant
+                  issued"</em>, panic-inducing threats.</td>
             </tr>
             <tr>
               <td><strong>Destination Links</strong></td>
-              <td>Clean, transparent URLs that match official domains. Hyperlink text and destination match identically.</td>
-              <td>Mismatched URLs, lookalike subdomains (<code>accounts.google.com.evil-site.org</code>), or masked shortlinks (<code>bit.ly</code>).</td>
+              <td>Clean, transparent URLs that match official domains. Hyperlink text and destination match identically.
+              </td>
+              <td>Mismatched URLs, lookalike subdomains (<code>accounts.google.com.evil-site.org</code>), or masked
+                shortlinks (<code>bit.ly</code>).</td>
             </tr>
             <tr>
               <td><strong>Request for Sensitive Data</strong></td>
-              <td><strong>Never</strong> requests passwords, PINs, or One-Time Passwords (OTPs) via email, chat, or phone.</td>
-              <td>Explicitly requests passwords, OTPs, Social Security Numbers, or credit card CVV details to "verify" identity.</td>
+              <td><strong>Never</strong> requests passwords, PINs, or One-Time Passwords (OTPs) via email, chat, or
+                phone.</td>
+              <td>Explicitly requests passwords, OTPs, Social Security Numbers, or credit card CVV details to "verify"
+                identity.</td>
             </tr>
             <tr>
               <td><strong>Attachments</strong></td>
-              <td>Standard PDF or document formats clearly anticipated by the recipient with clear digital signatures.</td>
-              <td>Unexpected executable files (<code>.exe</code>, <code>.scr</code>, <code>.bat</code>, <code>.vbs</code>) or macro-enabled documents (<code>.docm</code>).</td>
+              <td>Standard PDF or document formats clearly anticipated by the recipient with clear digital signatures.
+              </td>
+              <td>Unexpected executable files (<code>.exe</code>, <code>.scr</code>, <code>.bat</code>,
+                <code>.vbs</code>) or macro-enabled documents (<code>.docm</code>).
+              </td>
             </tr>
             <tr>
               <td><strong>Grammar & Branding</strong></td>
-              <td>Polished copy reviewed by professional communications teams with high-resolution, sharp corporate logos.</td>
-              <td>Frequent spelling typos, awkward syntax, broken punctuation, or blurry low-resolution stolen graphics.</td>
+              <td>Polished copy reviewed by professional communications teams with high-resolution, sharp corporate
+                logos.</td>
+              <td>Frequent spelling typos, awkward syntax, broken punctuation, or blurry low-resolution stolen graphics.
+              </td>
             </tr>
             <tr>
               <td><strong>Verification Path</strong></td>
-              <td>Provides independent customer support numbers and directs users to log in directly via the official app.</td>
-              <td>Insists that you <em>only</em> use the provided phone number or embedded button and warns against leaving the page.</td>
+              <td>Provides independent customer support numbers and directs users to log in directly via the official
+                app.</td>
+              <td>Insists that you <em>only</em> use the provided phone number or embedded button and warns against
+                leaving the page.</td>
             </tr>
           </tbody>
         </table>
@@ -1144,7 +1541,8 @@
       <div class="section-header">
         <span class="section-tag">Module 07 & 08</span>
         <h2 class="section-title">Incident Response & Action Guides</h2>
-        <p class="section-description">Clear, actionable protocols for when you encounter a suspicious message or make an accidental click.</p>
+        <p class="section-description">Clear, actionable protocols for when you encounter a suspicious message or make
+          an accidental click.</p>
       </div>
 
       <div class="playbook-container">
@@ -1152,11 +1550,14 @@
         <div class="playbook-card prevent">
           <div class="playbook-header">
             <div class="card-icon cyan" style="margin-bottom:0;">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+              </svg>
             </div>
             <div>
               <h3 style="font-size: 1.3rem; font-weight: 700;">If You Receive a Phishing Message</h3>
-              <p style="color: var(--text-muted); font-size: 0.88rem;">Prevention checklist before any action is taken</p>
+              <p style="color: var(--text-muted); font-size: 0.88rem;">Prevention checklist before any action is taken
+              </p>
             </div>
           </div>
 
@@ -1165,35 +1566,40 @@
               <input type="checkbox" class="checklist-check" id="chk-p1">
               <label for="chk-p1" class="checklist-text">
                 <h5>1. Do Not Click Any Links</h5>
-                <p>Never click buttons or text links inside unverified messages, even if they claim to unsubscribe you.</p>
+                <p>Never click buttons or text links inside unverified messages, even if they claim to unsubscribe you.
+                </p>
               </label>
             </li>
             <li class="checklist-item">
               <input type="checkbox" class="checklist-check" id="chk-p2">
               <label for="chk-p2" class="checklist-text">
                 <h5>2. Do Not Open Unexpected Attachments</h5>
-                <p>Never download or open attachments you were not anticipating, especially compressed ZIP files or executables.</p>
+                <p>Never download or open attachments you were not anticipating, especially compressed ZIP files or
+                  executables.</p>
               </label>
             </li>
             <li class="checklist-item">
               <input type="checkbox" class="checklist-check" id="chk-p3">
               <label for="chk-p3" class="checklist-text">
                 <h5>3. Never Share Passwords or OTPs</h5>
-                <p>Treat your One-Time Passwords like the keys to your house. No legitimate company will ever ask for them.</p>
+                <p>Treat your One-Time Passwords like the keys to your house. No legitimate company will ever ask for
+                  them.</p>
               </label>
             </li>
             <li class="checklist-item">
               <input type="checkbox" class="checklist-check" id="chk-p4">
               <label for="chk-p4" class="checklist-text">
                 <h5>4. Verify Through an Official Channel</h5>
-                <p>Contact the organization directly using a bookmark or verified phone number from their official website.</p>
+                <p>Contact the organization directly using a bookmark or verified phone number from their official
+                  website.</p>
               </label>
             </li>
             <li class="checklist-item">
               <input type="checkbox" class="checklist-check" id="chk-p5">
               <label for="chk-p5" class="checklist-text">
                 <h5>5. Report the Message</h5>
-                <p>Use your email client's built-in "Report Phishing" button or forward it to your campus IT Security team.</p>
+                <p>Use your email client's built-in "Report Phishing" button or forward it to your campus IT Security
+                  team.</p>
               </label>
             </li>
             <li class="checklist-item">
@@ -1210,7 +1616,11 @@
         <div class="playbook-card incident">
           <div class="playbook-header">
             <div class="card-icon rose" style="margin-bottom:0;">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="7.86 2 16.14 2 22 7.86 22 16.14 16.14 22 7.86 22 2 16.14 2 7.86 7.86 2"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon points="7.86 2 16.14 2 22 7.86 22 16.14 16.14 22 7.86 22 2 16.14 2 7.86 7.86 2" />
+                <line x1="12" y1="8" x2="12" y2="12" />
+                <line x1="12" y1="16" x2="12.01" y2="16" />
+              </svg>
             </div>
             <div>
               <h3 style="font-size: 1.3rem; font-weight: 700;">If You Accidentally Clicked</h3>
@@ -1223,42 +1633,48 @@
               <input type="checkbox" class="checklist-check" id="chk-e1">
               <label for="chk-e1" class="checklist-text">
                 <h5>Step 1: Disconnect Immediately</h5>
-                <p>Close the webpage immediately. If you suspect malware was downloaded, disconnect your device from Wi-Fi or Ethernet.</p>
+                <p>Close the webpage immediately. If you suspect malware was downloaded, disconnect your device from
+                  Wi-Fi or Ethernet.</p>
               </label>
             </li>
             <li class="checklist-item">
               <input type="checkbox" class="checklist-check" id="chk-e2">
               <label for="chk-e2" class="checklist-text">
                 <h5>Step 2: Change Compromised Passwords</h5>
-                <p>Using a separate trusted device, immediately change the password of the affected account and any accounts sharing the same password.</p>
+                <p>Using a separate trusted device, immediately change the password of the affected account and any
+                  accounts sharing the same password.</p>
               </label>
             </li>
             <li class="checklist-item">
               <input type="checkbox" class="checklist-check" id="chk-e3">
               <label for="chk-e3" class="checklist-text">
                 <h5>Step 3: Enable Multi-Factor Authentication (MFA)</h5>
-                <p>Turn on 2FA (preferably an authenticator app rather than SMS) so attackers cannot log in with stolen passwords alone.</p>
+                <p>Turn on 2FA (preferably an authenticator app rather than SMS) so attackers cannot log in with stolen
+                  passwords alone.</p>
               </label>
             </li>
             <li class="checklist-item">
               <input type="checkbox" class="checklist-check" id="chk-e4">
               <label for="chk-e4" class="checklist-text">
                 <h5>Step 4: Contact Relevant Organization / Bank</h5>
-                <p>If financial information was entered, immediately call your bank to freeze credit cards. If student info, inform campus IT.</p>
+                <p>If financial information was entered, immediately call your bank to freeze credit cards. If student
+                  info, inform campus IT.</p>
               </label>
             </li>
             <li class="checklist-item">
               <input type="checkbox" class="checklist-check" id="chk-e5">
               <label for="chk-e5" class="checklist-text">
                 <h5>Step 5: Report the Security Incident</h5>
-                <p>Report the attack to official cybercrime reporting portals (e.g., IC3.gov, local cyber cells, or school administration).</p>
+                <p>Report the attack to official cybercrime reporting portals (e.g., IC3.gov, local cyber cells, or
+                  school administration).</p>
               </label>
             </li>
             <li class="checklist-item">
               <input type="checkbox" class="checklist-check" id="chk-e6">
               <label for="chk-e6" class="checklist-text">
                 <h5>Step 6: Monitor Accounts Closely</h5>
-                <p>Review bank transactions, active login sessions, and email forwarding rules for suspicious unauthorized activity over the next 30 days.</p>
+                <p>Review bank transactions, active login sessions, and email forwarding rules for suspicious
+                  unauthorized activity over the next 30 days.</p>
               </label>
             </li>
           </ul>
@@ -1271,7 +1687,8 @@
       <div class="section-header">
         <span class="section-tag">Module 09</span>
         <h2 class="section-title">Interactive Phishing Quiz</h2>
-        <p class="section-description">Test your awareness with 10 real-world scenarios. Make the right call, learn the warning signs, and earn your certificate!</p>
+        <p class="section-description">Test your awareness with 10 real-world scenarios. Make the right call, learn the
+          warning signs, and earn your certificate!</p>
       </div>
 
       <div class="quiz-wrapper">
@@ -1310,25 +1727,36 @@
         <!-- Quiz Completion & Results View -->
         <div id="quiz-results-view" style="display: none;" class="quiz-results-card">
           <div id="result-badge" class="quiz-badge-big">🏆</div>
-          <h3 id="result-score-title" style="font-size: 1.8rem; font-weight: 800; margin-bottom: 0.5rem;">Quiz Completed!</h3>
-          <div id="result-score-num" style="font-size: 2.2rem; font-weight: 900; color: var(--cyan-primary); margin-bottom: 1rem;">10 / 10 (100%)</div>
-          <p id="result-score-msg" style="color: var(--text-muted); max-width: 600px; margin: 0 auto 2rem; font-size: 1.05rem;"></p>
+          <h3 id="result-score-title" style="font-size: 1.8rem; font-weight: 800; margin-bottom: 0.5rem;">Quiz
+            Completed!</h3>
+          <div id="result-score-num"
+            style="font-size: 2.2rem; font-weight: 900; color: var(--cyan-primary); margin-bottom: 1rem;">10 / 10 (100%)
+          </div>
+          <p id="result-score-msg"
+            style="color: var(--text-muted); max-width: 600px; margin: 0 auto 2rem; font-size: 1.05rem;"></p>
 
           <!-- Certificate Generator -->
-          <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 2rem; max-width: 540px; margin: 0 auto 2rem;">
-            <h4 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem; display: flex; align-items:center; justify-content:center; gap:0.5rem;">
+          <div
+            style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 2rem; max-width: 540px; margin: 0 auto 2rem;">
+            <h4
+              style="font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem; display: flex; align-items:center; justify-content:center; gap:0.5rem;">
               <span>🎓</span> Generate Your Cyber Defender Certificate
             </h4>
-            <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1.25rem;">Enter your student name below to render and download your personalized certificate of achievement.</p>
+            <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1.25rem;">Enter your student name
+              below to render and download your personalized certificate of achievement.</p>
             <div class="cert-input-group">
-              <input type="text" id="student-name-input" class="cert-input" placeholder="Enter Your Full Name" maxlength="40">
+              <input type="text" id="student-name-input" class="cert-input" placeholder="Enter Your Full Name"
+                maxlength="40">
               <button id="generate-cert-btn" class="btn btn-primary">Download</button>
             </div>
           </div>
 
           <div style="display: flex; justify-content: center; gap: 1rem;">
             <button id="quiz-restart-btn" class="btn btn-secondary">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
+                <path d="M3 3v5h5" />
+              </svg>
               Retake Quiz
             </button>
           </div>
@@ -1341,7 +1769,8 @@
       <div class="section-header">
         <span class="section-tag">Module 10</span>
         <h2 class="section-title">Phishing Awareness Poster</h2>
-        <p class="section-description">A clean, high-impact cybersecurity awareness poster for classrooms, campus bulletin boards, and digital signage.</p>
+        <p class="section-description">A clean, high-impact cybersecurity awareness poster for classrooms, campus
+          bulletin boards, and digital signage.</p>
       </div>
 
       <div class="poster-container">
@@ -1349,13 +1778,17 @@
         <div id="poster-printable" class="poster-canvas-box">
           <div class="poster-watermark">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
             </svg>
           </div>
 
           <div class="poster-header">
-            <div style="display: inline-flex; align-items: center; gap: 0.5rem; color: var(--cyan-primary); font-weight: 700; margin-bottom: 0.5rem; font-size: 0.95rem;">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+            <div
+              style="display: inline-flex; align-items: center; gap: 0.5rem; color: var(--cyan-primary); font-weight: 700; margin-bottom: 0.5rem; font-size: 0.95rem;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                <path d="m9 12 2 2 4-4" />
+              </svg>
               CAMPUS CYBERSECURITY INITIATIVE
             </div>
             <h2 class="poster-title">BE AWARE. STAY SECURE.</h2>
@@ -1418,7 +1851,11 @@
         <!-- Poster Print Button -->
         <div style="text-align: center; margin-top: 1.5rem;">
           <button id="print-poster-btn" class="btn btn-secondary">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect width="12" height="8" x="6" y="14"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 6 2 18 2 18 9" />
+              <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2" />
+              <rect width="12" height="8" x="6" y="14" />
+            </svg>
             Print / Save Poster as PDF
           </button>
         </div>
@@ -1430,11 +1867,14 @@
   <!-- Footer -->
   <footer class="footer">
     <div class="footer-content">
-      <div style="font-weight: 700; font-size: 1.2rem; margin-bottom: 0.5rem; display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
+      <div
+        style="font-weight: 700; font-size: 1.2rem; margin-bottom: 0.5rem; display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
         <span style="color: var(--cyan-primary);">🛡️</span> CyberGuard Educational Initiative
       </div>
       <p style="color: var(--text-muted); font-size: 0.9rem;">
-        An interactive educational cybersecurity project designed for schools, universities, and student awareness programs. Focused strictly on defensive cybersecurity, social engineering mitigation, and responsible online safety.
+        An interactive educational cybersecurity project designed for schools, universities, and student awareness
+        programs. Focused strictly on defensive cybersecurity, social engineering mitigation, and responsible online
+        safety.
       </p>
       <div class="footer-links">
         <a href="#intro">Introduction</a>
@@ -1453,4 +1893,5 @@
 
   <script src="app.js"></script>
 </body>
+
 </html>

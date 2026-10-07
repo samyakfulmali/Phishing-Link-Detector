@@ -224,6 +224,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initChecklist();
   initPoster();
   initScrollProgress();
+  initBackendIntegration();
 });
 
 // Reading Scroll Progress
@@ -590,10 +591,27 @@ function generateCertificate(name, score, total) {
   ctx.fillText('“Think Before You Click  •  When in Doubt, Verify”', 600, 540);
 
   // Date & Seal
+  const certId = `CERT-${Date.now().toString(36).toUpperCase()}-${Math.floor(1000 + Math.random() * 9000)}`;
   const dateStr = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
   ctx.fillStyle = "#64748b";
   ctx.font = "16px 'Inter', sans-serif";
-  ctx.fillText(`Issued: ${dateStr}  |  Verification Code: AGY-PHISH-${Math.floor(100000 + Math.random() * 900000)}`, 600, 640);
+  ctx.fillText(`Issued: ${dateStr}  |  Database Cert ID: ${certId}`, 600, 640);
+
+  // Submit to SQLite database
+  try {
+    fetch("/api/quiz/submit", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        user_name: name,
+        score: score,
+        total_questions: total,
+        certificate_id: certId
+      })
+    }).then(r => r.json()).then(data => {
+      if (typeof loadDatabaseStats === "function") loadDatabaseStats();
+    }).catch(() => {});
+  } catch (e) {}
 
   // Download Trigger
   const dataURL = canvas.toDataURL("image/png");
@@ -1160,15 +1178,17 @@ function initLinkDetector() {
   const tabSingle = document.getElementById("mode-single-btn");
   const tabBulk = document.getElementById("mode-bulk-btn");
   const tabQr = document.getElementById("mode-qr-btn");
+  const tabDb = document.getElementById("mode-db-btn");
 
   const panelSingle = document.getElementById("panel-single-mode");
   const panelBulk = document.getElementById("panel-bulk-mode");
   const panelQr = document.getElementById("panel-qr-mode");
+  const panelDb = document.getElementById("panel-db-mode");
 
   function switchMode(mode) {
     audio.playClick();
-    [tabSingle, tabBulk, tabQr].forEach(t => t && t.classList.remove("active"));
-    [panelSingle, panelBulk, panelQr].forEach(p => p && (p.style.display = "none"));
+    [tabSingle, tabBulk, tabQr, tabDb].forEach(t => t && t.classList.remove("active"));
+    [panelSingle, panelBulk, panelQr, panelDb].forEach(p => p && (p.style.display = "none"));
 
     if (mode === "single" && tabSingle && panelSingle) {
       tabSingle.classList.add("active");
@@ -1179,14 +1199,20 @@ function initLinkDetector() {
     } else if (mode === "qr" && tabQr && panelQr) {
       tabQr.classList.add("active");
       panelQr.style.display = "block";
+    } else if (mode === "db" && tabDb && panelDb) {
+      tabDb.classList.add("active");
+      panelDb.style.display = "block";
+      if (typeof loadDatabaseStats === "function") loadDatabaseStats();
+      if (typeof loadRecentScans === "function") loadRecentScans();
     }
   }
 
   if (tabSingle) tabSingle.addEventListener("click", () => switchMode("single"));
   if (tabBulk) tabBulk.addEventListener("click", () => switchMode("bulk"));
   if (tabQr) tabQr.addEventListener("click", () => switchMode("qr"));
+  if (tabDb) tabDb.addEventListener("click", () => switchMode("db"));
 
-  // Connect Navbar links that point to bulk and qr
+  // Connect Navbar links that point to bulk, qr, and database
   document.querySelectorAll('a[href="#bulk-scanner-tab"]').forEach(link => {
     link.addEventListener("click", (e) => {
       e.preventDefault();
@@ -1199,6 +1225,14 @@ function initLinkDetector() {
     link.addEventListener("click", (e) => {
       e.preventDefault();
       switchMode("qr");
+      document.getElementById("detector").scrollIntoView({ behavior: "smooth" });
+    });
+  });
+
+  document.querySelectorAll('a[href="#database-panel-tab"]').forEach(link => {
+    link.addEventListener("click", (e) => {
+      e.preventDefault();
+      switchMode("db");
       document.getElementById("detector").scrollIntoView({ behavior: "smooth" });
     });
   });
@@ -1269,37 +1303,78 @@ function initLinkDetector() {
   }
 
   // Perform Scan Function
-  function performScan(targetUrl) {
+  async function performScan(targetUrl) {
     audio.playScan();
     if (resultCard) resultCard.style.display = "none";
     if (loader) loader.style.display = "block";
 
-    setTimeout(() => {
-      try {
-        const result = detectorEngine.analyze(targetUrl);
-        latestScanResult = result;
-        renderScanResults(result);
-        if (loader) loader.style.display = "none";
-        if (resultCard) resultCard.style.display = "block";
-
-        if (result.riskScore >= 75) {
-          audio.playDangerAlert();
-        } else {
-          audio.playSafeChime();
-        }
-
-        resultCard.scrollIntoView({ behavior: "smooth", block: "nearest" });
-      } catch (err) {
-        if (loader) loader.style.display = "none";
-        alert("Invalid URL: " + err.message);
+    // Call Backend API and persist to SQLite if available
+    let backendData = null;
+    try {
+      const resp = await fetch("/api/scan", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ url: targetUrl }),
+        signal: AbortSignal.timeout(3000)
+      });
+      if (resp.ok) {
+        backendData = await resp.json();
       }
-    }, 320);
+    } catch (e) {
+      // Backend not running / standalone file mode fallback
+    }
+
+    try {
+      const result = detectorEngine.analyze(targetUrl);
+      if (backendData) {
+        result.savedScanId = backendData.scan_id;
+        result.dnsStatus = backendData.dns_status;
+        result.dnsRecords = backendData.dns_records;
+        if (typeof loadDatabaseStats === "function") loadDatabaseStats();
+        if (typeof loadRecentScans === "function") loadRecentScans();
+      }
+      latestScanResult = result;
+      renderScanResults(result);
+      if (loader) loader.style.display = "none";
+      if (resultCard) resultCard.style.display = "block";
+
+      if (result.riskScore >= 75) {
+        audio.playDangerAlert();
+      } else {
+        audio.playSafeChime();
+      }
+
+      resultCard.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    } catch (err) {
+      if (loader) loader.style.display = "none";
+      alert("Invalid URL: " + err.message);
+    }
   }
 
   // Render Result Card
   function renderScanResults(res) {
     document.getElementById("res-target-url").textContent = res.fullUrl;
-    document.getElementById("res-scan-meta").textContent = `Scan completed in ${res.duration}ms • Engine v2.4 Active`;
+    document.getElementById("res-scan-meta").textContent = `Scan completed in ${res.duration}ms • Engine v2.5 Active`;
+
+    // Database Persistence & Live DNS Badges
+    const dbBadge = document.getElementById("res-db-badge");
+    const dbText = document.getElementById("res-db-badge-text");
+    const dnsBadge = document.getElementById("res-dns-badge");
+    const dnsText = document.getElementById("res-dns-badge-text");
+
+    if (res.savedScanId && dbBadge) {
+      dbBadge.style.display = "inline-flex";
+      if (dbText) dbText.textContent = `SQLite Logged (Scan #${res.savedScanId})`;
+    } else if (dbBadge) {
+      dbBadge.style.display = "none";
+    }
+
+    if (res.dnsStatus && dnsBadge) {
+      dnsBadge.style.display = "inline-flex";
+      if (dnsText) dnsText.textContent = `DNS: ${res.dnsStatus}`;
+    } else if (dnsBadge) {
+      dnsBadge.style.display = "none";
+    }
 
     // Radial Gauge
     const gaugeCircle = document.getElementById("res-gauge-circle");
@@ -1824,5 +1899,308 @@ function initThreatCounters() {
     if (scannedEl) scannedEl.textContent = baseScanned.toLocaleString();
     if (defangedEl) defangedEl.textContent = baseDefanged.toLocaleString();
   }, 9000);
+}
+
+// ==========================================================================
+// Full-Stack Backend & SQLite Database Integration
+// ==========================================================================
+
+let isBackendOnline = false;
+
+async function initBackendIntegration() {
+  const statusPill = document.getElementById("backend-status-pill");
+  const statusDot = document.getElementById("backend-status-dot");
+  const statusText = document.getElementById("backend-status-text");
+
+  const dbConnBadge = document.getElementById("db-conn-badge");
+  const dbConnDot = document.getElementById("db-conn-dot");
+  const dbConnText = document.getElementById("db-conn-text");
+
+  try {
+    const res = await fetch("/api/health", { signal: AbortSignal.timeout(3000) });
+    if (res.ok) {
+      const data = await res.json();
+      isBackendOnline = true;
+
+      // Update Header Status Indicator
+      if (statusDot) {
+        statusDot.style.background = "#10b981";
+        statusDot.style.boxShadow = "0 0 10px #10b981";
+      }
+      if (statusText) statusText.textContent = "Backend: FastAPI + SQLite Online";
+
+      // Update Database Tab Badge
+      if (dbConnBadge) dbConnBadge.classList.remove("offline");
+      if (dbConnDot) {
+        dbConnDot.style.background = "#10b981";
+        dbConnDot.style.boxShadow = "0 0 10px #10b981";
+      }
+      if (dbConnText) dbConnText.textContent = "FastAPI Backend & SQLite Active";
+
+      loadDatabaseStats();
+      loadRecentScans();
+    } else {
+      markBackendOffline();
+    }
+  } catch (err) {
+    markBackendOffline();
+  }
+
+  // Setup Database Tab Controls
+  initDatabaseControls();
+}
+
+function markBackendOffline() {
+  isBackendOnline = false;
+  const statusDot = document.getElementById("backend-status-dot");
+  const statusText = document.getElementById("backend-status-text");
+  const dbConnBadge = document.getElementById("db-conn-badge");
+  const dbConnDot = document.getElementById("db-conn-dot");
+  const dbConnText = document.getElementById("db-conn-text");
+  const tbody = document.getElementById("db-scans-table-body");
+
+  if (statusDot) {
+    statusDot.style.background = "#f59e0b";
+    statusDot.style.boxShadow = "0 0 10px #f59e0b";
+  }
+  if (statusText) statusText.textContent = "Mode: Standalone In-Browser";
+
+  if (dbConnBadge) dbConnBadge.classList.add("offline");
+  if (dbConnDot) {
+    dbConnDot.style.background = "#f59e0b";
+    dbConnDot.style.boxShadow = "0 0 10px #f59e0b";
+  }
+  if (dbConnText) dbConnText.textContent = "Standalone Mode (Run start_server.bat for DB)";
+
+  if (tbody) {
+    tbody.innerHTML = `
+      <tr>
+        <td colspan="6" style="text-align: center; color: var(--text-muted); padding: 2rem;">
+          <div style="font-weight: 600; color: var(--amber-warn); margin-bottom: 0.35rem;">Standalone In-Browser Engine Active</div>
+          <div style="font-size: 0.85rem;">To activate persistent SQLite scan logging, community reports, and live DNS intelligence, run <code>start_server.bat</code> or <code>python run_server.py</code>.</div>
+        </td>
+      </tr>
+    `;
+  }
+}
+
+async function loadDatabaseStats() {
+  if (!isBackendOnline) return;
+  try {
+    const res = await fetch("/api/stats");
+    if (!res.ok) return;
+    const stats = await res.json();
+
+    const elTotal = document.getElementById("db-stat-total");
+    const elThreats = document.getElementById("db-stat-threats");
+    const elSafe = document.getElementById("db-stat-safe");
+    const elReports = document.getElementById("db-stat-reports");
+
+    if (elTotal) elTotal.textContent = stats.total_scans.toLocaleString();
+    if (elThreats) elThreats.textContent = stats.phishing_detected.toLocaleString();
+    if (elSafe) elSafe.textContent = stats.safe_verified.toLocaleString();
+    if (elReports) elReports.textContent = stats.total_reports.toLocaleString();
+  } catch (e) {
+    console.warn("Error fetching stats:", e);
+  }
+}
+
+async function loadRecentScans() {
+  if (!isBackendOnline) return;
+  const tbody = document.getElementById("db-scans-table-body");
+  if (!tbody) return;
+
+  try {
+    const res = await fetch("/api/scans?limit=25");
+    if (!res.ok) return;
+    const data = await res.json();
+    const scans = data.scans || [];
+
+    if (scans.length === 0) {
+      tbody.innerHTML = `
+        <tr>
+          <td colspan="6" style="text-align: center; color: var(--text-muted); padding: 1.5rem;">
+            No scan records found in SQLite yet. Use the Link Inspector above to analyze a link!
+          </td>
+        </tr>
+      `;
+      return;
+    }
+
+    tbody.innerHTML = "";
+    scans.forEach(s => {
+      const tr = document.createElement("tr");
+
+      let badgeClass = "safe";
+      if (s.risk_score >= 75) badgeClass = "danger";
+      else if (s.risk_score >= 50) badgeClass = "warn";
+      else if (s.risk_score >= 25) badgeClass = "caution";
+
+      const timeStr = s.scanned_at ? new Date(s.scanned_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : "Just now";
+
+      tr.innerHTML = `
+        <td style="font-family: var(--font-mono); font-weight: 700; color: var(--text-dim);">#${s.id}</td>
+        <td style="max-width: 260px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="${s.url}">
+          <div style="font-weight: 600; color: var(--text-main);">${s.domain}</div>
+          <div style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-muted); overflow: hidden; text-overflow: ellipsis;">${s.url}</div>
+        </td>
+        <td>
+          <span class="preset-chip ${badgeClass}" style="font-size: 0.76rem; padding: 0.2rem 0.55rem;">
+            ${s.risk_score}% ${s.risk_level.split(" ")[0]}
+          </span>
+        </td>
+        <td>
+          <span class="dns-pill" style="font-size: 0.74rem;">${s.dns_status || "Resolved"}</span>
+        </td>
+        <td style="font-size: 0.8rem; color: var(--text-muted);">${timeStr}</td>
+        <td>
+          <button class="scanner-tool-btn db-inspect-btn" data-url="${encodeURIComponent(s.url)}" style="padding: 0.25rem 0.55rem; font-size: 0.78rem;">
+            Inspect
+          </button>
+        </td>
+      `;
+      tbody.appendChild(tr);
+    });
+
+    // Wire Inspect buttons in table
+    document.querySelectorAll(".db-inspect-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        audio.playClick();
+        const targetUrl = decodeURIComponent(btn.getAttribute("data-url"));
+        const singleTab = document.getElementById("mode-single-btn");
+        if (singleTab) singleTab.click();
+        const input = document.getElementById("url-input");
+        if (input) {
+          input.value = targetUrl;
+          const scanBtn = document.getElementById("scan-url-btn");
+          if (scanBtn) scanBtn.click();
+        }
+      });
+    });
+
+  } catch (err) {
+    console.warn("Error loading scans:", err);
+  }
+}
+
+function initDatabaseControls() {
+  // Refresh Button
+  const refreshBtn = document.getElementById("db-refresh-btn");
+  if (refreshBtn) {
+    refreshBtn.addEventListener("click", () => {
+      audio.playClick();
+      loadDatabaseStats();
+      loadRecentScans();
+    });
+  }
+
+  // Report Threat Form
+  const reportForm = document.getElementById("db-report-form");
+  const reportStatus = document.getElementById("db-report-status");
+
+  if (reportForm) {
+    reportForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      audio.playClick();
+
+      const urlInput = document.getElementById("db-report-url");
+      const typeSelect = document.getElementById("db-report-type");
+      const nameInput = document.getElementById("db-report-name");
+      const notesInput = document.getElementById("db-report-notes");
+
+      const payload = {
+        url: urlInput.value.trim(),
+        threat_type: typeSelect.value,
+        reporter_name: nameInput.value.trim() || "Anonymous Analyst",
+        notes: notesInput.value.trim()
+      };
+
+      try {
+        const res = await fetch("/api/reports/submit", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        });
+
+        if (res.ok) {
+          const result = await res.json();
+          audio.playSafeChime();
+          if (reportStatus) {
+            reportStatus.style.display = "block";
+            reportStatus.style.color = "var(--emerald-safe)";
+            reportStatus.textContent = `✅ Successfully logged to SQLite (Report #${result.report_id})!`;
+          }
+          urlInput.value = "";
+          notesInput.value = "";
+          loadDatabaseStats();
+          setTimeout(() => {
+            if (reportStatus) reportStatus.style.display = "none";
+          }, 3500);
+        } else {
+          throw new Error("Server responded with error");
+        }
+      } catch (err) {
+        audio.playIncorrect();
+        if (reportStatus) {
+          reportStatus.style.display = "block";
+          reportStatus.style.color = "var(--rose-danger)";
+          reportStatus.textContent = "❌ Failed to report threat. Ensure backend server is running.";
+        }
+      }
+    });
+  }
+
+  // Certificate Verification Tool
+  const verifyBtn = document.getElementById("db-cert-verify-btn");
+  const certInput = document.getElementById("db-cert-input");
+  const certResult = document.getElementById("db-cert-result");
+
+  if (verifyBtn && certInput && certResult) {
+    verifyBtn.addEventListener("click", async () => {
+      audio.playClick();
+      const code = certInput.value.trim();
+      if (!code) {
+        audio.playIncorrect();
+        certInput.focus();
+        return;
+      }
+
+      certResult.innerHTML = `<span style="color: var(--cyan-primary);">🔍 Querying SQLite database for certificate ${code}...</span>`;
+
+      try {
+        const res = await fetch(`/api/quiz/certificate/${encodeURIComponent(code)}`);
+        if (res.ok) {
+          const data = await res.json();
+          const cert = data.certificate;
+          audio.playSafeChime();
+          certResult.innerHTML = `
+            <div style="color: var(--emerald-safe); font-weight: 700; margin-bottom: 0.35rem; display: flex; align-items: center; gap: 0.5rem;">
+              <span>✅ VERIFIED OFFICIAL CERTIFICATE</span>
+            </div>
+            <div><strong>Recipient:</strong> ${cert.user_name}</div>
+            <div><strong>Score:</strong> ${cert.score} / ${cert.total_questions} (${cert.percentage}%)</div>
+            <div style="font-size: 0.78rem; color: var(--text-dim); margin-top: 0.25rem;">Issued: ${new Date(cert.completed_at).toLocaleString()} | ID: ${cert.certificate_id}</div>
+          `;
+        } else {
+          audio.playIncorrect();
+          certResult.innerHTML = `
+            <div style="color: var(--rose-danger); font-weight: 700; margin-bottom: 0.25rem;">
+              ❌ UNVERIFIED OR INVALID CERTIFICATE ID
+            </div>
+            <div style="font-size: 0.85rem; color: var(--text-muted);">
+              No cryptographic entry matching <code>${code}</code> was found in the official records.
+            </div>
+          `;
+        }
+      } catch (e) {
+        audio.playIncorrect();
+        certResult.innerHTML = `
+          <div style="color: var(--amber-warn); font-weight: 600;">
+            ⚠️ Unable to connect to verification backend. Launch <code>start_server.bat</code> to verify certificates against SQLite.
+          </div>
+        `;
+      }
+    });
+  }
 }
 

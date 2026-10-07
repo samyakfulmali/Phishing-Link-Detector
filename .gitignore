@@ -5,3 +5,8 @@ cloudflared.exe
 # Logs & Temp
 *.log
 .system_generated/
+
+# Python Virtual Environment & Bytecode
+.venv/
+__pycache__/
+*.pyc

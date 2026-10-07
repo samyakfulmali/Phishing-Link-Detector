@@ -3,8 +3,10 @@
 > **A State-of-the-Art, Real-Time In-Browser Phishing Link Detector and Cybersecurity Defense Suite**
 
 [![Security Analysis](https://img.shields.io/badge/Domain-Phishing%20Link%20Detection-06b6d4.svg)](#)
-[![Zero Dependencies](https://img.shields.io/badge/Stack-HTML5%20%7C%20CSS3%20%7C%20JavaScript-8b5cf6.svg)](#)
-[![Threat Engine](https://img.shields.io/badge/Engine-Deep%20Heuristics%20v2.4-10b981.svg)](#)
+[![Security Analysis](https://img.shields.io/badge/Domain-Phishing%20Link%20Detection-06b6d4.svg)](#)
+[![Full-Stack Architecture](https://img.shields.io/badge/Stack-FastAPI%20%7C%20SQLite%20%7C%20HTML5%20%7C%20JS-8b5cf6.svg)](#)
+[![Threat Engine](https://img.shields.io/badge/Engine-Deep%20Heuristics%20v2.5%20%2B%20DNS%20Intel-10b981.svg)](#)
+[![Database](https://img.shields.io/badge/Database-SQLite%20(phishguard.db)-f59e0b.svg)](#)
 [![Status](https://img.shields.io/badge/Status-Complete%20%26%20Production%20Ready-success.svg)](#)
 
 ---
@@ -13,12 +15,62 @@
 
 Phishing and malicious link distribution account for over **90% of unauthorized data breaches and digital fraud** worldwide. Today's cybercriminals deploy sophisticated deception techniques—ranging from subdomain stuffing and lookalike homograph (Punycode) characters to concealed URL shorteners and HTTP Basic Authentication tricks—designed to bypass automated email gateways and deceive human eyes.
 
-**PhishGuard** is an advanced, high-performance, in-browser **Phishing Link Detector and Cyber Defense Platform**. Built entirely with native web standards (HTML5, Vanilla CSS3, and JavaScript) with zero runtime dependencies or backend servers, it delivers instant deep forensic link analysis, bulk email text parsing, QR code quishing inspection, safe SOC-compliant link defanging, alongside a complete interactive educational cybersecurity curriculum.
+**PhishGuard** is an advanced, high-performance, full-stack **Phishing Link Detector and Cyber Defense Platform**. Built with **Python 3.12 (FastAPI), SQLite, and modern HTML5/CSS3/JavaScript**, it delivers:
+- **Instant forensic heuristic link analysis & threat scoring** (0–100%)
+- **Live DNS threat intelligence resolution** (via `dnspython` checking A-records, MX records, and NXDOMAIN dead traps)
+- **Persistent SQLite threat database** (`phishguard.db`) storing all scans, community reports, and certificates
+- **Interactive OpenAPI / Swagger Documentation** at `http://localhost:5000/docs`
+- **Bulk email text link extraction & CSV export**
+- **QR code quishing inspection & safe link defanging**
+- **Official verified certification generator with cryptographic database lookup**
+- **Graceful client-side fallback** if run without a server
 
 ---
 
-## ⚡ Core Phishing Link Detector Capabilities
+## 🚀 How to Launch the Full-Stack Platform
 
+### Option 1: One-Click Launch (Recommended)
+Double-click **`start_server.bat`** in the project folder.
+It automatically activates the virtual environment and starts the FastAPI server + SQLite database at:
+* **Frontend Application:** `http://localhost:5000/`
+* **Swagger API Documentation:** `http://localhost:5000/docs`
+* **Health Check & Telemetry:** `http://localhost:5000/api/health`
+
+### Option 2: Command Line (PowerShell)
+```powershell
+# Run using the configured virtual environment
+.\.venv\Scripts\python.exe run_server.py
+```
+
+### Option 3: Standalone In-Browser Mode (Zero Setup)
+Double-click `index.html`. The app gracefully runs in standalone mode using its client-side JavaScript heuristic engine with zero server requirements.
+
+---
+
+## 📂 Project Structure
+
+```
+d:\Phishing-Link-Detector\
+│
+├── backend/
+│   ├── __init__.py          # Backend package marker
+│   ├── database.py          # SQLite schema, tables (scans, reports, certs), and CRUD queries
+│   ├── scanner.py           # 10-point heuristic rule engine, brand database, & live DNS resolver
+│   └── main.py              # FastAPI application, REST endpoints (/api/scan, /api/stats), & static files
+│
+├── .venv/                   # Python 3.12 virtual environment (FastAPI, uvicorn, dnspython, sqlite)
+├── phishguard.db            # Persistent local SQLite database
+├── requirements.txt         # Pinned Python package dependencies
+├── run_server.py            # Universal server runner script
+├── start_server.bat         # 1-click batch launcher for Windows
+├── serve.ps1                # Lightweight PowerShell fallback HTTP server
+│
+├── index.html               # Main single-page application UI with 4 detector modes & 9 EDU modules
+├── style.css                # Futuristic cyber styling, glassmorphism, radar effects, gauge, & print CSS
+├── app.js                   # Client-side controller, real-time API client, audio cues, & canvas certs
+├── PROJECT_REPORT.md        # Academic and technical report
+└── README.md                # Project documentation & user guide
+```
 ### 1. 🔍 Single URL Heuristic Link Inspector
 - **Instant Heuristic Threat Scoring (0–100%)**: Calculates a multi-factor risk score powered by deterministic weighted security rules.
 - **Radial SVG Threat Meter**: Visual animated circular gauge reflecting real-time threat probability with color-shifting statuses:

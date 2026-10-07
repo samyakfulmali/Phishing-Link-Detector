@@ -218,7 +218,10 @@
               <div class="scan-meta-badge" style="display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap;">
                 <span id="res-scan-meta">Scan completed in 14ms • Heuristic Engine v2.5</span>
                 <span id="res-db-badge" class="db-saved-pill" style="display: none;">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/></svg>
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path
+                      d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2" />
+                  </svg>
                   <span id="res-db-badge-text">Logged to SQLite</span>
                 </span>
                 <span id="res-dns-badge" class="dns-pill" style="display: none;">
@@ -457,129 +460,160 @@
           <div id="qr-status-msg"
             style="margin-top: 1rem; font-size: 0.92rem; text-align: center; color: var(--text-muted);"></div>
 
+        </div>
+      </div>
+
+      <!-- 4. Database & Threat Intelligence Mode -->
+      <div id="panel-db-mode" style="display: none;">
+        <!-- Backend & Database Status Bar -->
+        <div class="db-banner-box">
+          <div class="db-banner-info">
+            <div class="db-status-badge" id="db-conn-badge">
+              <span class="radar-dot" id="db-conn-dot" style="background:#10b981;box-shadow:0 0 10px #10b981;"></span>
+              <span id="db-conn-text">FastAPI Backend & SQLite Active</span>
+            </div>
+            <div class="db-dbfile-tag">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path
+                  d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2" />
+              </svg>
+              <span>Database: <strong>phishguard.db</strong> (Local SQLite)</span>
+            </div>
+          </div>
+          <div class="db-banner-links">
+            <a href="/docs" target="_blank" class="btn btn-secondary btn-sm"
+              title="Interactive OpenAPI / Swagger Documentation">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="16 18 22 12 16 6" />
+                <polyline points="8 6 2 12 8 18" />
+              </svg>
+              <span>Swagger Docs (/docs)</span>
+            </a>
+            <button id="db-refresh-btn" class="btn btn-secondary btn-sm" title="Refresh Live Records">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8" />
+                <path d="M21 3v5h-5" />
+                <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16" />
+                <path d="M8 16H3v5" />
+              </svg>
+              <span>Refresh</span>
+            </button>
           </div>
         </div>
 
-        <!-- 4. Database & Threat Intelligence Mode -->
-        <div id="panel-db-mode" style="display: none;">
-          <!-- Backend & Database Status Bar -->
-          <div class="db-banner-box">
-            <div class="db-banner-info">
-              <div class="db-status-badge" id="db-conn-badge">
-                <span class="radar-dot" id="db-conn-dot" style="background:#10b981;box-shadow:0 0 10px #10b981;"></span>
-                <span id="db-conn-text">FastAPI Backend & SQLite Active</span>
+        <!-- Real-Time Metrics Row -->
+        <div class="bulk-stats-row" style="margin-top: 1.25rem;">
+          <div class="bulk-stat-card">
+            <div id="db-stat-total" class="bulk-stat-num" style="color: var(--cyan-primary);">0</div>
+            <div class="bulk-stat-label">Total SQLite Scans</div>
+          </div>
+          <div class="bulk-stat-card">
+            <div id="db-stat-threats" class="bulk-stat-num" style="color: var(--rose-danger);">0</div>
+            <div class="bulk-stat-label">Threats Logged</div>
+          </div>
+          <div class="bulk-stat-card">
+            <div id="db-stat-safe" class="bulk-stat-num" style="color: var(--emerald-safe);">0</div>
+            <div class="bulk-stat-label">Safe Verified</div>
+          </div>
+          <div class="bulk-stat-card">
+            <div id="db-stat-reports" class="bulk-stat-num" style="color: var(--amber-warn);">0</div>
+            <div class="bulk-stat-label">Community Reports</div>
+          </div>
+        </div>
+
+        <!-- Section Header: Recent Scans -->
+        <div
+          style="margin-top: 2rem; display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 0.5rem;">
+          <div>
+            <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.2rem;">Recent
+              Persistent Scans</h3>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Historical URLs analyzed and persisted
+              in SQLite `scans` table</p>
+          </div>
+        </div>
+
+        <div class="bulk-table-container" style="max-height: 280px; overflow-y: auto; margin-top: 0.75rem;">
+          <table class="bulk-table">
+            <thead>
+              <tr>
+                <th style="width: 55px;">#ID</th>
+                <th>Target URL / Domain</th>
+                <th>Risk Rating</th>
+                <th>Live DNS</th>
+                <th>Timestamp</th>
+                <th>Inspect</th>
+              </tr>
+            </thead>
+            <tbody id="db-scans-table-body">
+              <tr>
+                <td colspan="6" style="text-align: center; color: var(--text-muted); padding: 2rem;">Loading scan
+                  database records...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Threat Reporting & Certificate Verification Split Cards -->
+        <div class="db-tools-grid"
+          style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.25rem; margin-top: 2rem;">
+          <!-- Report Phish Card -->
+          <div class="db-tool-card">
+            <h4
+              style="font-size: 1.05rem; font-weight: 700; color: var(--text-main); display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.35rem;">
+              <span style="color: var(--rose-danger);">🚨</span> Report Threat to Database
+            </h4>
+            <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 0.75rem;">Submit newly discovered
+              phishing traps to the persistent SQLite threat database.</p>
+            <form id="db-report-form" style="display: flex; flex-direction: column; gap: 0.6rem;">
+              <input type="text" id="db-report-url" class="scanner-input"
+                placeholder="Suspicious link (e.g., https://fake-bank.click)..."
+                style="font-size: 0.88rem; padding: 0.6rem 0.85rem;" required>
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;">
+                <select id="db-report-type" class="scanner-input" style="font-size: 0.88rem; padding: 0.6rem;">
+                  <option value="Brand Impersonation">Brand Spoofing</option>
+                  <option value="Credential Harvesting">Credential Harvesting</option>
+                  <option value="Quishing">Quishing (QR Scam)</option>
+                  <option value="Malware Dropper">Malware Dropper</option>
+                  <option value="Financial Fraud">Financial Fraud</option>
+                </select>
+                <input type="text" id="db-report-name" class="scanner-input" placeholder="Reporter Name"
+                  style="font-size: 0.88rem; padding: 0.6rem 0.85rem;" value="SOC Analyst">
               </div>
-              <div class="db-dbfile-tag">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/></svg>
-                <span>Database: <strong>phishguard.db</strong> (Local SQLite)</span>
-              </div>
-            </div>
-            <div class="db-banner-links">
-              <a href="/docs" target="_blank" class="btn btn-secondary btn-sm" title="Interactive OpenAPI / Swagger Documentation">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-                <span>Swagger Docs (/docs)</span>
-              </a>
-              <button id="db-refresh-btn" class="btn btn-secondary btn-sm" title="Refresh Live Records">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg>
-                <span>Refresh</span>
+              <input type="text" id="db-report-notes" class="scanner-input"
+                placeholder="Notes (e.g. Received via student email)"
+                style="font-size: 0.88rem; padding: 0.6rem 0.85rem;">
+              <button type="submit" class="btn btn-primary" style="padding: 0.6rem 1rem; align-self: flex-start;">
+                <span>Submit Threat</span>
+              </button>
+              <div id="db-report-status" style="font-size: 0.82rem; display: none;"></div>
+            </form>
+          </div>
+
+          <!-- Verify Certificate Card -->
+          <div class="db-tool-card">
+            <h4
+              style="font-size: 1.05rem; font-weight: 700; color: var(--text-main); display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.35rem;">
+              <span style="color: var(--cyan-primary);">🎓</span> Verify Security Certificate
+            </h4>
+            <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 0.75rem;">Verify authenticity of
+              credentials stored in the `quiz_submissions` table.</p>
+            <div style="display: flex; gap: 0.5rem; margin-bottom: 0.75rem;">
+              <input type="text" id="db-cert-input" class="scanner-input" placeholder="Enter Certificate ID..."
+                style="font-size: 0.88rem; padding: 0.6rem 0.85rem;">
+              <button id="db-cert-verify-btn" class="btn btn-secondary" type="button"
+                style="white-space: nowrap; padding: 0.6rem 1rem;">
+                <span>Verify</span>
               </button>
             </div>
-          </div>
-
-          <!-- Real-Time Metrics Row -->
-          <div class="bulk-stats-row" style="margin-top: 1.25rem;">
-            <div class="bulk-stat-card">
-              <div id="db-stat-total" class="bulk-stat-num" style="color: var(--cyan-primary);">0</div>
-              <div class="bulk-stat-label">Total SQLite Scans</div>
-            </div>
-            <div class="bulk-stat-card">
-              <div id="db-stat-threats" class="bulk-stat-num" style="color: var(--rose-danger);">0</div>
-              <div class="bulk-stat-label">Threats Logged</div>
-            </div>
-            <div class="bulk-stat-card">
-              <div id="db-stat-safe" class="bulk-stat-num" style="color: var(--emerald-safe);">0</div>
-              <div class="bulk-stat-label">Safe Verified</div>
-            </div>
-            <div class="bulk-stat-card">
-              <div id="db-stat-reports" class="bulk-stat-num" style="color: var(--amber-warn);">0</div>
-              <div class="bulk-stat-label">Community Reports</div>
-            </div>
-          </div>
-
-          <!-- Section Header: Recent Scans -->
-          <div style="margin-top: 2rem; display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 0.5rem;">
-            <div>
-              <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.2rem;">Recent Persistent Scans</h3>
-              <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Historical URLs analyzed and persisted in SQLite `scans` table</p>
-            </div>
-          </div>
-
-          <div class="bulk-table-container" style="max-height: 280px; overflow-y: auto; margin-top: 0.75rem;">
-            <table class="bulk-table">
-              <thead>
-                <tr>
-                  <th style="width: 55px;">#ID</th>
-                  <th>Target URL / Domain</th>
-                  <th>Risk Rating</th>
-                  <th>Live DNS</th>
-                  <th>Timestamp</th>
-                  <th>Inspect</th>
-                </tr>
-              </thead>
-              <tbody id="db-scans-table-body">
-                <tr><td colspan="6" style="text-align: center; color: var(--text-muted); padding: 2rem;">Loading scan database records...</td></tr>
-              </tbody>
-            </table>
-          </div>
-
-          <!-- Threat Reporting & Certificate Verification Split Cards -->
-          <div class="db-tools-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.25rem; margin-top: 2rem;">
-            <!-- Report Phish Card -->
-            <div class="db-tool-card">
-              <h4 style="font-size: 1.05rem; font-weight: 700; color: var(--text-main); display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.35rem;">
-                <span style="color: var(--rose-danger);">🚨</span> Report Threat to Database
-              </h4>
-              <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 0.75rem;">Submit newly discovered phishing traps to the persistent SQLite threat database.</p>
-              <form id="db-report-form" style="display: flex; flex-direction: column; gap: 0.6rem;">
-                <input type="text" id="db-report-url" class="scanner-input" placeholder="Suspicious link (e.g., https://fake-bank.click)..." style="font-size: 0.88rem; padding: 0.6rem 0.85rem;" required>
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;">
-                  <select id="db-report-type" class="scanner-input" style="font-size: 0.88rem; padding: 0.6rem;">
-                    <option value="Brand Impersonation">Brand Spoofing</option>
-                    <option value="Credential Harvesting">Credential Harvesting</option>
-                    <option value="Quishing">Quishing (QR Scam)</option>
-                    <option value="Malware Dropper">Malware Dropper</option>
-                    <option value="Financial Fraud">Financial Fraud</option>
-                  </select>
-                  <input type="text" id="db-report-name" class="scanner-input" placeholder="Reporter Name" style="font-size: 0.88rem; padding: 0.6rem 0.85rem;" value="SOC Analyst">
-                </div>
-                <input type="text" id="db-report-notes" class="scanner-input" placeholder="Notes (e.g. Received via student email)" style="font-size: 0.88rem; padding: 0.6rem 0.85rem;">
-                <button type="submit" class="btn btn-primary" style="padding: 0.6rem 1rem; align-self: flex-start;">
-                  <span>Submit Threat</span>
-                </button>
-                <div id="db-report-status" style="font-size: 0.82rem; display: none;"></div>
-              </form>
-            </div>
-
-            <!-- Verify Certificate Card -->
-            <div class="db-tool-card">
-              <h4 style="font-size: 1.05rem; font-weight: 700; color: var(--text-main); display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.35rem;">
-                <span style="color: var(--cyan-primary);">🎓</span> Verify Security Certificate
-              </h4>
-              <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 0.75rem;">Verify authenticity of credentials stored in the `quiz_submissions` table.</p>
-              <div style="display: flex; gap: 0.5rem; margin-bottom: 0.75rem;">
-                <input type="text" id="db-cert-input" class="scanner-input" placeholder="Enter Certificate ID..." style="font-size: 0.88rem; padding: 0.6rem 0.85rem;">
-                <button id="db-cert-verify-btn" class="btn btn-secondary" type="button" style="white-space: nowrap; padding: 0.6rem 1rem;">
-                  <span>Verify</span>
-                </button>
-              </div>
-              <div id="db-cert-result" style="background: rgba(15, 23, 42, 0.6); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 0.75rem; font-size: 0.85rem; color: var(--text-muted); min-height: 80px;">
-                Enter a certificate code generated from the Quiz module to verify its database record.
-              </div>
+            <div id="db-cert-result"
+              style="background: rgba(15, 23, 42, 0.6); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 0.75rem; font-size: 0.85rem; color: var(--text-muted); min-height: 80px;">
+              Enter a certificate code generated from the Quiz module to verify its database record.
             </div>
           </div>
         </div>
-
       </div>
+
+    </div>
     </div>
   </section>
 

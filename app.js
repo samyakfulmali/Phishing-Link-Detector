@@ -222,7 +222,6 @@ document.addEventListener("DOMContentLoaded", () => {
   initSimulator();
   initQuiz();
   initChecklist();
-  initPoster();
   initScrollProgress();
   initBackendIntegration();
 });
@@ -639,16 +638,6 @@ function initChecklist() {
   });
 }
 
-// Poster Print & Download
-function initPoster() {
-  const printBtn = document.getElementById("print-poster-btn");
-  if (printBtn) {
-    printBtn.addEventListener("click", () => {
-      audio.playClick();
-      window.print();
-    });
-  }
-}
 
 // ==========================================================================
 // Advanced Phishing Link Detector - Heuristic Engine & Controllers

@@ -232,7 +232,25 @@ async def get_certificate(cert_id: str):
     return {"verified": True, "certificate": cert}
 
 
-# Serve Static Frontend Files
+# Serve Static & SEO / Verification Files
+
+@app.get("/google17f984687990ba34.html")
+async def serve_google_verify():
+    file_path = os.path.join(FRONTEND_DIR, "google17f984687990ba34.html")
+    if os.path.exists(file_path):
+        return FileResponse(file_path, media_type="text/html")
+    return "google-site-verification: google17f984687990ba34.html"
+
+
+@app.get("/robots.txt")
+async def serve_robots():
+    return FileResponse(os.path.join(FRONTEND_DIR, "robots.txt"), media_type="text/plain")
+
+
+@app.get("/sitemap.xml")
+async def serve_sitemap():
+    return FileResponse(os.path.join(FRONTEND_DIR, "sitemap.xml"), media_type="application/xml")
+
 
 @app.get("/")
 async def serve_index():

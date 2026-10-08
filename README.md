@@ -127,7 +127,7 @@ d:\Phishing-Link-Detector\
 - **Module 06: Legitimate vs. Phishing Comparison Matrix** — 8-dimension comparative forensic audit.
 - **Module 07: Standard Operating Procedures** — Incident checklists for suspicious messages and accidental clicks.
 - **Module 08: 10-Question Gamified Quiz & Certificate** — Realistic multi-scenario MCQs with instant feedback and HTML5 Canvas **Certificate of Proficiency** generator.
-- **Module 09: Awareness Poster** — High-impact, printable poster with memorable cybersecurity slogans and print-optimized CSS.
+
 
 ---
 

@@ -7,14 +7,31 @@ scan logs, community phishing reports, and quiz certifications.
 import sqlite3
 import json
 import os
+import shutil
 from datetime import datetime
 from typing import List, Dict, Any, Optional
 
-DB_PATH = os.path.join(os.path.dirname(os.path.dirname(__file__)), "phishguard.db")
+# Serverless environment (Vercel) detection
+# On Vercel, the application directory is strictly read-only. We point SQLite to /tmp.
+if os.environ.get("VERCEL") or os.environ.get("NOW_REGION"):
+    DB_PATH = os.path.join("/tmp", "phishguard.db")
+    _REPO_DB = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "phishguard.db")
+    if os.path.exists(_REPO_DB) and not os.path.exists(DB_PATH):
+        try:
+            shutil.copyfile(_REPO_DB, DB_PATH)
+        except Exception:
+            pass
+else:
+    DB_PATH = os.environ.get("SQLITE_PATH", os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "phishguard.db"))
+
+_db_initialized = False
 
 
 def get_db_connection() -> sqlite3.Connection:
     """Creates a connection to the SQLite database with dictionary rows."""
+    global _db_initialized
+    if not _db_initialized:
+        init_db()
     conn = sqlite3.connect(DB_PATH)
     conn.row_factory = sqlite3.Row
     return conn
@@ -22,90 +39,96 @@ def get_db_connection() -> sqlite3.Connection:
 
 def init_db():
     """Initializes the database schema if tables do not exist."""
-    conn = get_db_connection()
-    cursor = conn.cursor()
+    global _db_initialized
+    _db_initialized = True
+    try:
+        conn = sqlite3.connect(DB_PATH)
+        conn.row_factory = sqlite3.Row
+        cursor = conn.cursor()
 
-    # 1. Scans Table - stores every scanned URL and forensic analysis
-    cursor.execute("""
-    CREATE TABLE IF NOT EXISTS scans (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        url TEXT NOT NULL,
-        domain TEXT NOT NULL,
-        risk_score INTEGER NOT NULL,
-        risk_level TEXT NOT NULL,
-        verdict TEXT NOT NULL,
-        flags TEXT NOT NULL,         -- JSON array of strings
-        breakdown TEXT NOT NULL,     -- JSON array/object of checklist
-        defanged_url TEXT NOT NULL,
-        dns_status TEXT,             -- Live DNS lookup verdict
-        dns_records TEXT,            -- JSON object of resolved IPs, MX, NS
-        client_ip TEXT,
-        scanned_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-    )
-    """)
-
-    # 2. Reported Phishing Table - crowdsourced & security team submissions
-    cursor.execute("""
-    CREATE TABLE IF NOT EXISTS reported_threats (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        url TEXT NOT NULL,
-        domain TEXT NOT NULL,
-        threat_type TEXT NOT NULL,
-        reporter_name TEXT NOT NULL,
-        notes TEXT,
-        status TEXT DEFAULT 'Confirmed Phishing',
-        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-    )
-    """)
-
-    # 3. Quiz & Certification Submissions Table
-    cursor.execute("""
-    CREATE TABLE IF NOT EXISTS quiz_submissions (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        user_name TEXT NOT NULL,
-        score INTEGER NOT NULL,
-        total_questions INTEGER NOT NULL,
-        percentage REAL NOT NULL,
-        certificate_id TEXT UNIQUE NOT NULL,
-        completed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-    )
-    """)
-
-    # 4. Known Threat Intelligence Cache (High abuse domains, verified safe domains)
-    cursor.execute("""
-    CREATE TABLE IF NOT EXISTS threat_cache (
-        domain TEXT PRIMARY KEY,
-        reputation TEXT NOT NULL,    -- 'MALICIOUS', 'SUSPICIOUS', 'VERIFIED_SAFE'
-        category TEXT,
-        notes TEXT,
-        added_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-    )
-    """)
-
-    # Seed baseline threat reputation cache if empty
-    cursor.execute("SELECT COUNT(*) FROM threat_cache")
-    if cursor.fetchone()[0] == 0:
-        known_threats = [
-            ("paypal-security-update.xyz", "MALICIOUS", "Brand Impersonation", "Known credential harvester"),
-            ("verify-appleid-support.top", "MALICIOUS", "Brand Impersonation", "Fake iCloud portal"),
-            ("login-microsoft-secure.buzz", "MALICIOUS", "Credential Theft", "Spoofed Office 365"),
-            ("steamcommunity-trade-gift.click", "MALICIOUS", "Steam Scam", "Session hijacker"),
-            ("coinbase-wallet-rectify.loan", "MALICIOUS", "Crypto Drainer", "Fake seed phrase prompt"),
-            ("google.com", "VERIFIED_SAFE", "Official Brand", "Verified apex domain"),
-            ("paypal.com", "VERIFIED_SAFE", "Official Brand", "Verified apex domain"),
-            ("apple.com", "VERIFIED_SAFE", "Official Brand", "Verified apex domain"),
-            ("microsoft.com", "VERIFIED_SAFE", "Official Brand", "Verified apex domain"),
-            ("amazon.com", "VERIFIED_SAFE", "Official Brand", "Verified apex domain"),
-            ("chase.com", "VERIFIED_SAFE", "Official Brand", "Verified apex domain"),
-            ("github.com", "VERIFIED_SAFE", "Official Brand", "Verified apex domain"),
-        ]
-        cursor.executemany(
-            "INSERT INTO threat_cache (domain, reputation, category, notes) VALUES (?, ?, ?, ?)",
-            known_threats
+        # 1. Scans Table - stores every scanned URL and forensic analysis
+        cursor.execute("""
+        CREATE TABLE IF NOT EXISTS scans (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            url TEXT NOT NULL,
+            domain TEXT NOT NULL,
+            risk_score INTEGER NOT NULL,
+            risk_level TEXT NOT NULL,
+            verdict TEXT NOT NULL,
+            flags TEXT NOT NULL,         -- JSON array of strings
+            breakdown TEXT NOT NULL,     -- JSON array/object of checklist
+            defanged_url TEXT NOT NULL,
+            dns_status TEXT,             -- Live DNS lookup verdict
+            dns_records TEXT,            -- JSON object of resolved IPs, MX, NS
+            client_ip TEXT,
+            scanned_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         )
+        """)
 
-    conn.commit()
-    conn.close()
+        # 2. Reported Phishing Table - crowdsourced & security team submissions
+        cursor.execute("""
+        CREATE TABLE IF NOT EXISTS reported_threats (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            url TEXT NOT NULL,
+            domain TEXT NOT NULL,
+            threat_type TEXT NOT NULL,
+            reporter_name TEXT NOT NULL,
+            notes TEXT,
+            status TEXT DEFAULT 'Confirmed Phishing',
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )
+        """)
+
+        # 3. Quiz & Certification Submissions Table
+        cursor.execute("""
+        CREATE TABLE IF NOT EXISTS quiz_submissions (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            user_name TEXT NOT NULL,
+            score INTEGER NOT NULL,
+            total_questions INTEGER NOT NULL,
+            percentage REAL NOT NULL,
+            certificate_id TEXT UNIQUE NOT NULL,
+            completed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )
+        """)
+
+        # 4. Known Threat Intelligence Cache (High abuse domains, verified safe domains)
+        cursor.execute("""
+        CREATE TABLE IF NOT EXISTS threat_cache (
+            domain TEXT PRIMARY KEY,
+            reputation TEXT NOT NULL,    -- 'MALICIOUS', 'SUSPICIOUS', 'VERIFIED_SAFE'
+            category TEXT,
+            notes TEXT,
+            added_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )
+        """)
+
+        # Seed baseline threat reputation cache if empty
+        cursor.execute("SELECT COUNT(*) FROM threat_cache")
+        if cursor.fetchone()[0] == 0:
+            known_threats = [
+                ("paypal-security-update.xyz", "MALICIOUS", "Brand Impersonation", "Known credential harvester"),
+                ("verify-appleid-support.top", "MALICIOUS", "Brand Impersonation", "Fake iCloud portal"),
+                ("login-microsoft-secure.buzz", "MALICIOUS", "Credential Theft", "Spoofed Office 365"),
+                ("steamcommunity-trade-gift.click", "MALICIOUS", "Steam Scam", "Session hijacker"),
+                ("coinbase-wallet-rectify.loan", "MALICIOUS", "Crypto Drainer", "Fake seed phrase prompt"),
+                ("google.com", "VERIFIED_SAFE", "Official Brand", "Verified apex domain"),
+                ("paypal.com", "VERIFIED_SAFE", "Official Brand", "Verified apex domain"),
+                ("apple.com", "VERIFIED_SAFE", "Official Brand", "Verified apex domain"),
+                ("microsoft.com", "VERIFIED_SAFE", "Official Brand", "Verified apex domain"),
+                ("amazon.com", "VERIFIED_SAFE", "Official Brand", "Verified apex domain"),
+                ("chase.com", "VERIFIED_SAFE", "Official Brand", "Verified apex domain"),
+                ("github.com", "VERIFIED_SAFE", "Official Brand", "Verified apex domain"),
+            ]
+            cursor.executemany(
+                "INSERT INTO threat_cache (domain, reputation, category, notes) VALUES (?, ?, ?, ?)",
+                known_threats
+            )
+
+        conn.commit()
+        conn.close()
+    except Exception as e:
+        print(f"[Warning] PhishGuard SQLite init: {e}")
 
 
 # Database Access Functions

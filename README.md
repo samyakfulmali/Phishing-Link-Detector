@@ -42,7 +42,16 @@ It automatically activates the virtual environment and starts the FastAPI server
 .\.venv\Scripts\python.exe run_server.py
 ```
 
-### Option 3: Standalone In-Browser Mode (Zero Setup)
+### Option 3: Deploy to Vercel (Cloud Serverless)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fsamyakfulmali%2FPhishing-Link-Detector)
+
+1. Push your repository to GitHub: `git push origin main`
+2. Go to [Vercel Dashboard](https://vercel.com/new) and click **"Add New Project"**
+3. Select your repository (`samyakfulmali/Phishing-Link-Detector`)
+4. Click **Deploy** (zero-config, settings automatically detected via `vercel.json`)
+5. Your live app is instantly online with global CDN for static assets and serverless Python FastAPI endpoints under `/api/*`!
+
+### Option 4: Standalone In-Browser Mode (Zero Setup)
 Double-click `index.html`. The app gracefully runs in standalone mode using its client-side JavaScript heuristic engine with zero server requirements.
 
 ---
@@ -52,18 +61,22 @@ Double-click `index.html`. The app gracefully runs in standalone mode using its 
 ```
 d:\Phishing-Link-Detector\
 │
+├── api/
+│   └── index.py             # Vercel serverless function entrypoint (exposing FastAPI app)
+│
 ├── backend/
 │   ├── __init__.py          # Backend package marker
-│   ├── database.py          # SQLite schema, tables (scans, reports, certs), and CRUD queries
+│   ├── database.py          # SQLite schema, tables (scans, reports, certs), resilient /tmp support
 │   ├── scanner.py           # 10-point heuristic rule engine, brand database, & live DNS resolver
-│   └── main.py              # FastAPI application, REST endpoints (/api/scan, /api/stats), & static files
+│   └── main.py              # FastAPI app with APIRouter (/api/scan, /api/health), CORS & static files
 │
-├── .venv/                   # Python 3.12 virtual environment (FastAPI, uvicorn, dnspython, sqlite)
-├── phishguard.db            # Persistent local SQLite database
-├── requirements.txt         # Pinned Python package dependencies
-├── run_server.py            # Universal server runner script
+├── vercel.json              # Vercel routing rules (/api/* rewrites) & security headers
+├── .vercelignore            # Excludes binaries (cloudflared.exe), venv, and logs from deployment
+├── .python-version          # Python 3.12 version indicator
+├── requirements.txt         # Clean UTF-8 dependencies (FastAPI, uvicorn, pydantic, dnspython)
+├── phishguard.db            # Persistent SQLite database
+├── run_server.py            # Local FastAPI dev server runner
 ├── start_server.bat         # 1-click batch launcher for Windows
-├── serve.ps1                # Lightweight PowerShell fallback HTTP server
 │
 ├── index.html               # Main single-page application UI with 4 detector modes & 9 EDU modules
 ├── style.css                # Futuristic cyber styling, glassmorphism, radar effects, gauge, & print CSS
@@ -128,35 +141,6 @@ d:\Phishing-Link-Detector\
 - **Module 07: Standard Operating Procedures** — Incident checklists for suspicious messages and accidental clicks.
 - **Module 08: 10-Question Gamified Quiz & Certificate** — Realistic multi-scenario MCQs with instant feedback and HTML5 Canvas **Certificate of Proficiency** generator.
 - **Module 09: Awareness Slogans & Defense Rules** — High-impact cybersecurity slogans, core defense rules, and best practices for daily digital safety.
-
----
-
-## 🚀 How to Launch the Project
-
-No web servers, Node.js, Python, or npm installations are required! The platform runs entirely client-side in any modern web browser.
-
-### Option 1: Direct File Launch
-Double-click `index.html` or open it with Google Chrome, Microsoft Edge, Mozilla Firefox, or Brave.
-
-### Option 2: Command Line (PowerShell / Windows)
-```powershell
-# Open directly in default web browser
-Start-Process "d:\Cybersecurity\index.html"
-```
-
----
-
-## 📂 Project Structure
-
-```
-d:\Cybersecurity\
-│
-├── index.html           # Main single-page application with Phishing Link Detector & EDU suite
-├── style.css            # Futuristic cyber styling, glassmorphism, radar effects, gauge, & print CSS
-├── app.js               # PhishDetectorEngine, bulk scanner, QR decoder, audio, quiz, & cert canvas
-├── PROJECT_REPORT.md    # Comprehensive academic & technical report documenting the detector
-└── README.md            # Project documentation & user guide
-```
 
 ---
 

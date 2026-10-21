@@ -1,0 +1,17 @@
+# Large Windows Binaries
+cloudflared.exe
+*.exe
+
+# Local Python virtual environment & caches
+.venv/
+__pycache__/
+*.pyc
+
+# Local scripts
+serve.ps1
+*.bat
+
+# Git & Logs
+.git
+*.log
+.system_generated/
